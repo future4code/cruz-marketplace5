@@ -1,5 +1,7 @@
+import React from 'react'
 import { AppContainer } from './components/AppContainer'
 import styled from 'styled-components'
+import Footer from './components/Footer/Footer'
 
 
 const DivAppContainer = styled.div`
@@ -13,12 +15,6 @@ const Header = styled.header`
 	text-align: center;
 	padding: 0;
 	margin: 0;
-`
-
-const Footer = styled.footer`
-	background-color: #545863;
-	text-align: center;
-
 `
 
 const Body = styled.body`
@@ -86,10 +82,9 @@ export default class App extends React.Component {
 				<ButtonVender>vender</ButtonVender>
 			</Header>
 			<Body>
-			<AppContainer />
-
+			  <AppContainer />
 			</Body>
-			<Footer>Seja Bem Vindo</Footer>
+      <Footer />
 			</DivAppContainer>
 		);
 	} 
