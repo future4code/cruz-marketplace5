@@ -1,10 +1,14 @@
 import React from 'react'
 import { AppContainer } from './components/AppContainer'
+import styled from 'styled-components'
 
-function App() {
-	return (
-        <AppContainer />
-	)
+
+
+export default class App extends React.Component {
+	return() {
+		return(
+			<AppContainer />
+		);
+	} 
 }
 
-export default App
