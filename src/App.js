@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 
 const DivAppContainer = styled.div`
-	background-color: white;
+	background-color: #FFE3E3;
 `
 
 const Header = styled.header`
@@ -13,7 +13,7 @@ const Header = styled.header`
 	justify-content: space-around;
 	text-align: center;
 	padding: 0;
-	margin: 0 0;
+	margin: 0;
 `
 
 const Footer = styled.footer`
@@ -32,14 +32,47 @@ border-radius: 15px;
 
 `
 const ButtonComprar = styled.button`
-padding: 2px 10px;
-margin: 20px;
-border-radius: 15px;
-margin-left: 600px;
+  background-color: #D643AD;
+  border: none;
+  color: white;
+  text-decoration: none;
+  margin: 20px 4px;
+  border-radius: 10px;
+  background-color: #D643AD;
+  background-image: linear-gradient(to left, #FFE3E3, #EC805C);
+  width: 7%;
+  cursor: pointer;
+  &:hover{
+    background-color: #07C6FD;
+    color: white;
+    font-size: 100%;
+    &:active {
+      background-color: black;
+      color: black;
+    }
+  }
 `
 const ButtonVender = styled.button`
-margin: 20px;
-border-radius: 15px;
+  background-color: #D643AD;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  text-decoration: none;
+  margin: 20px 4px;
+  border-radius: 10px;
+  background-color: #EC805C;
+  width: 7%;
+  margin-left: 65px;
+  cursor: pointer;
+  &:hover{
+    background-color: #07C6FD;
+    color: white;
+    font-size: 100%;
+    &:active {
+      background-color: black;
+      color: black;
+    }
+  }
 `
 
 export default class App extends React.Component {
