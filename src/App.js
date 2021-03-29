@@ -7,7 +7,6 @@ import Footer from './components/Footer/Footer'
 const DivAppContainer = styled.div`
 	background-color: #FFE3E3;
 `
-
 const Header = styled.header`
 	display: flex;
 	background-color: #545863;
@@ -16,7 +15,6 @@ const Header = styled.header`
 	padding: 0;
 	margin: 0;
 `
-
 const Body = styled.body`
 	height: 100vh;
 
@@ -70,7 +68,13 @@ const ButtonVender = styled.button`
   }
 `
 
+
 export default class App extends React.Component {
+
+state = {
+  
+}
+
 	render() {
 		return(
 			<DivAppContainer>
