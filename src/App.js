@@ -1,3 +1,4 @@
+import React from 'react'
 import { AppContainer } from './components/AppContainer'
 import styled from 'styled-components'
 
@@ -5,7 +6,6 @@ import styled from 'styled-components'
 const DivAppContainer = styled.div`
 	background-color: #FFE3E3;
 `
-
 const Header = styled.header`
 	display: flex;
 	background-color: #545863;
@@ -14,13 +14,11 @@ const Header = styled.header`
 	padding: 0;
 	margin: 0;
 `
-
 const Footer = styled.footer`
 	background-color: #545863;
 	text-align: center;
 
 `
-
 const Body = styled.body`
 	height: 100vh;
 
@@ -74,7 +72,13 @@ const ButtonVender = styled.button`
   }
 `
 
+
 export default class App extends React.Component {
+
+state = {
+  
+}
+
 	render() {
 		return(
 			<DivAppContainer>
