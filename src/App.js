@@ -10,12 +10,79 @@ import Badge from "@material-ui/core/Badge";
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Header from './components/Header/Header'
 
 
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}))(Badge);
 
+const HeaderContainer = styled.div`
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+`
 const Body = styled.body`
+<<<<<<< HEAD
   `
+=======
+  
+`
+const InputSearch = styled.input`
+
+margin:25px;
+border-radius: 10px;
+border: none;
+border-bottom: 2px solid #EC805C;
+`
+const TextFieldPesquisar = styled(TextField)({
+  marginTop:'20px',
+  borderRadius:10,
+  color: 'grey'
+})
+const ButtonComprar = styled(Button)({
+  border: 'none',
+  textDecoration: 'none',
+  margin: '20px 4px',
+  borderRadius: 10,
+  backgroundImage: 'linear-gradient(to left, #FFE3E3, #EC805C)',
+  width: '7%',
+  height:'6%',
+  cursor: 'pointer',
+  '&:hover': {
+    color: 'white',
+    fontSize: '90%',
+    '&:active': {
+      color: 'black',
+    }
+  }
+});
+const ButtonVender = styled(Button)({
+  backgroundImage: 'linear-gradient(to left, #FFE3E3, #EC805C)',
+  color: 'white',
+  border: 'none',
+  padding: '8px 10px',
+  textDecoration: 'none',
+  margin: '20px 4px',
+  borderRadius: '10px',
+  width: '7%',
+  height: '6%',
+  cursor: 'pointer',
+  '&:hover': {
+    color: 'black',
+    fontSize: '90%',
+    '&:active': {
+      color: 'black',
+    }
+  }
+});
+>>>>>>> 836dd31bb9ba5f0df3f85fff8a9beec886c3e26e
 
 
 
@@ -29,7 +96,31 @@ state = {
 		return(
 			<ThemeProvider theme={theme}>
 
-      <Header/>
+			<HeaderContainer variant='contained' color="primary">
+				<h1>Logo</h1>
+
+
+        <TextFieldPesquisar id="outlined-search" label="Pesquisar" type="search" variant="outlined" />
+
+
+				<InputSearch 
+					placeholder='pesquisar'/>
+
+				<ButtonComprar item xs={3} color="primary">Comprar</ButtonComprar>
+
+        <IconButton aria-label="cart">
+          <StyledBadge anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+            }} 
+            badgeContent={6} color="secondary">
+          <ShoppingCartIcon color="primary"/>
+          </StyledBadge>
+        </IconButton>
+        
+
+				<ButtonVender color="secondary">vender</ButtonVender>
+			</HeaderContainer>
 
 			<Body color="primary">
 			  <AppContainer color="primary" />
