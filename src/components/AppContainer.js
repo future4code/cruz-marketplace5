@@ -38,7 +38,7 @@ const Imagens = styled.img`
     width:100px;
     height:100px;
 `
-const DescricaoProdutos =styled.div`
+const DescricaoProdutos = styled.div`
   display:flex;
   flex-direction:column;
 `
@@ -64,14 +64,14 @@ export class AppContainer extends React.Component {
 
   render() {
     const mostrarTela = this.state.showProducts.map((produtos) => {
-      return <ProdutosTela>
-                <Imagens src={produtos.photos}></Imagens>
-                <DescricaoProdutos>
-                  <div>{produtos.name}</div>
-                  <div>R$:{produtos.price},0</div>
-                </DescricaoProdutos>
-                <button>Comprar</button>
-            </ProdutosTela>
+        return <ProdutosTela>
+          <Imagens src={produtos.photos}></Imagens>
+          <DescricaoProdutos>
+            <div>{produtos.name}</div>
+            <div>R$:{produtos.price},0</div>
+          </DescricaoProdutos>
+          <button>Comprar</button>
+        </ProdutosTela>
     })
 
     return (
