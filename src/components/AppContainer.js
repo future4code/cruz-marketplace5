@@ -16,34 +16,75 @@ const Carrossel = styled.div`
 
 const Produtos = styled.div`
   display:flex;
-  flex:3;
-  border:1px solid red;
+  flex:1;
+  justify-content:center;
+  align-items:center;
+  width:100%;
+  margin:10px 0;
+`
+const ProdutosPai = styled.div`
+  display:grid;
+  grid-template-columns:300px 300px 300px ;
+  padding:50px;
+  justify-content:center;
+  grid-gap:2px;
+  width:100%;
+  height:100%;
+`
+const ProdutosTela = styled.div`
+    border:1px solid black;
+    text-align:center;
+`
+const Imagens = styled.img`
+    width:100px;
+    height:100px;
+`
+const DescricaoProdutos =styled.div`
+  display:flex;
+  flex-direction:column;
 `
 export class AppContainer extends React.Component {
 
   state = {
-    showProducts:[]
+    showProducts: []
   }
 
+  componentDidMount() {
+    this.getProducts();
+  }
 
-  getProducts = async() =>{
-    try{
-        const response = await axios.get("https://us-central1-labenu-apis.cloudfunctions.net/fourUsedTwo/products")
-        this.setState({showProducts:response.data.products})
-        console.log("estate",this.state.showProducts);
-    }catch(erro){
-      console.log("erro",erro);
+  getProducts = async () => {
+    try {
+      const response = await axios.get("https://us-central1-labenu-apis.cloudfunctions.net/fourUsedTwo/products")
+      this.setState({ showProducts: response.data.products })
+      console.log("estate", this.state.showProducts);
+    } catch (erro) {
+      console.log("erro", erro);
     }
   }
 
   render() {
+    const mostrarTela = this.state.showProducts.map((produtos) => {
+      return <ProdutosTela>
+                <Imagens src={produtos.photos}></Imagens>
+                <DescricaoProdutos>
+                  <div>{produtos.name}</div>
+                  <div>R$:{produtos.price},0</div>
+                </DescricaoProdutos>
+                <button>Comprar</button>
+            </ProdutosTela>
+    })
+
     return (
       <Principal>
-          <Carrossel>
+        <Carrossel>
 
-          </Carrossel>
-          <Produtos>
-          </Produtos>
+        </Carrossel>
+        <Produtos>
+          <ProdutosPai>
+            {mostrarTela}
+          </ProdutosPai>
+        </Produtos>
       </Principal>
     );
   }
