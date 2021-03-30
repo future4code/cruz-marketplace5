@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 const HeaderCima = styled.header`
     background-color:#545863;
@@ -27,10 +29,14 @@ const TituloFooter = styled.h3`
     font-weight: bold;
     text-transform: uppercase;
 `
+const RedesSociais = styled.div`
+    display:flex;
+    justify-content:space-evenly;
+`
 
-export default class Footer extends React.Component{
-    render(){
-        return(
+export default class Footer extends React.Component {
+    render() {
+        return (
             <div>
                 <HeaderCima>
                     <FooterLink>
@@ -41,30 +47,32 @@ export default class Footer extends React.Component{
                             <p>Infantil</p>
                         </FooterLinkFilho>
                         <FooterLinkFilho>
-                        <TituloFooter>Mais Buscados</TituloFooter>
+                            <TituloFooter>Mais Buscados</TituloFooter>
                             <p>Produto 1</p>
                             <p>Produto 2</p>
                             <p>Produto 3</p>
                             <p>Produto 4</p>
                         </FooterLinkFilho>
                         <FooterLinkFilho>
-                        <TituloFooter>Marcas mais buscadas</TituloFooter>
+                            <TituloFooter>Marcas mais buscadas</TituloFooter>
                             <p>Marca1</p>
                             <p>Marca2</p>
                             <p>Marca3</p>
                             <p>Marca4</p>
                         </FooterLinkFilho>
                         <FooterLinkFilho>
-                        <TituloFooter>Minha Conta</TituloFooter>
+                            <TituloFooter>Minha Conta</TituloFooter>
                             <p>Minha loja</p>
                             <p>Minhas Vendas</p>
                             <p>Minhas Compras</p>
                         </FooterLinkFilho>
                         <FooterLinkFilho>
-                        <TituloFooter>Redes Sociais</TituloFooter>
-                            <p>Facebook</p>
-                            <p>Twitter</p>
-                            <p>Instagram</p>
+                            <TituloFooter>Redes Sociais</TituloFooter>
+                            <RedesSociais>
+                                <FacebookIcon />
+                                <TwitterIcon />
+                                <InstagramIcon />
+                            </RedesSociais>
                         </FooterLinkFilho>
                     </FooterLink>
                     <HeaderMargin>
