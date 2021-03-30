@@ -22,13 +22,11 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 const HeaderContainer = styled.div`
-
 	display: flex;
 	justify-content: space-around;
 	text-align: center;
 	padding: 0;
 	margin: 0;
-
 `
 const Body = styled.body`
 
