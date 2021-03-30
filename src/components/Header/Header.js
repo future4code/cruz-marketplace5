@@ -76,7 +76,6 @@ const StyledBadge = withStyles((theme) => ({
         Vender
       </Button>
 
-      <BotaoVender color="primary">vender</BotaoVender>
     </HeaderContainer>
 
     )
