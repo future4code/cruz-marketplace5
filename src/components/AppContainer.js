@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import axios from 'axios';
 
 const Principal = styled.div`
   display:flex;
@@ -16,12 +17,24 @@ const Produtos = styled.div`
   display:flex;
   flex:3;
   border:1px solid red;
-  justify-content:center;
-  align-items:center;
-  font-size:100px;
-  
 `
 export class AppContainer extends React.Component {
+
+  state = {
+    showProducts:[]
+  }
+
+
+  getProducts = async() =>{
+    try{
+        const response = await axios.get("https://us-central1-labenu-apis.cloudfunctions.net/fourUsedTwo/products")
+        this.setState({showProducts:response.data.products})
+        console.log("estate",this.state.showProducts);
+    }catch(erro){
+      console.log("erro",erro);
+    }
+  }
+
   render() {
     return (
       <Principal>
@@ -29,7 +42,6 @@ export class AppContainer extends React.Component {
 
           </Carrossel>
           <Produtos>
-              Produtos aqui !
           </Produtos>
       </Principal>
     );

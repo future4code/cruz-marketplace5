@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
-/**/
+
 const HeaderCima = styled.header`
     background-color:#545863;
     width:100%;
@@ -19,7 +19,7 @@ const FooterLink = styled.div`
     margin: 0 auto;
 `
 const FooterLinkFilho = styled.div`
-    width:20%;
+    width:25%;
     font-size:20px;
     text-align:center;
 `
@@ -29,8 +29,14 @@ const TituloFooter = styled.h3`
     font-weight: bold;
     text-transform: uppercase;
 `
-const RedesSociais = styled.div`
+const FooterLinkFilhoRedesSocial = styled.div`
     display:flex;
+    justify-content:center;
+    align-items:center;
+`
+const RedesSociais = styled.div`
+    display:flex; 
+    width:50%;   
     justify-content:space-evenly;
 `
 
@@ -66,15 +72,14 @@ export default class Footer extends React.Component {
                             <p>Minhas Vendas</p>
                             <p>Minhas Compras</p>
                         </FooterLinkFilho>
-                        <FooterLinkFilho>
-                            <TituloFooter>Redes Sociais</TituloFooter>
-                            <RedesSociais>
-                                <FacebookIcon />
-                                <TwitterIcon />
-                                <InstagramIcon />
-                            </RedesSociais>
-                        </FooterLinkFilho>
                     </FooterLink>
+                    <FooterLinkFilhoRedesSocial>
+                        <RedesSociais>
+                            <FacebookIcon />
+                            <TwitterIcon />
+                            <InstagramIcon />
+                        </RedesSociais>
+                    </FooterLinkFilhoRedesSocial>
                     <HeaderMargin>
                         <h2>&copy; Todos os direitos Dirigidos para 4USED - Old is cool</h2>
                     </HeaderMargin>
