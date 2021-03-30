@@ -117,7 +117,7 @@ export default class App extends React.Component {
         color="secondary" 
       />
 
-      {this.botaoMudarPagina( )}
+      {this.botaoMudarPagina()}
 
       <IconCartButton aria-label="cart">
         <StyledBadge anchorOrigin={{
