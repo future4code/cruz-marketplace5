@@ -29,9 +29,7 @@ const HeaderContainer = styled.div`
 	margin: 0;
 `
 const Body = styled.body`
-
-	height: 100vh;
-
+  
 `
 const InputSearch = styled.input`
 
