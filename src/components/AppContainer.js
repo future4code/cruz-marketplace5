@@ -6,6 +6,7 @@ const Principal = styled.div`
   display:flex;
   flex-direction:column;
   height:150vh;
+  background-color: #FFE3E3;
 `
 const Carrossel = styled.div`
   display:flex;
