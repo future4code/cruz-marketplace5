@@ -17,7 +17,6 @@ const Principal = styled.div`
 const Produtos = styled.div`
   display: flex;
   flex: 3;
-  border: 1px solid red;
 `;
 
 export class AppContainer extends React.Component {
