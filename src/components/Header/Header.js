@@ -7,6 +7,7 @@ import Badge from "@material-ui/core/Badge";
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Collapse } from '@material-ui/core';
 
 
 const StyledBadge = withStyles((theme) => ({
@@ -25,44 +26,13 @@ const StyledBadge = withStyles((theme) => ({
       padding: 0;
       margin: 0;
   `
-  const Body = styled.body`
-    
-  `
-  const InputSearch = styled.input`
-  
-  margin:25px;
-  border-radius: 10px;
-  border: none;
-  border-bottom: 2px solid #EC805C;
-  `
+
   const TextFieldPesquisar = styled(TextField)({
-    marginTop:'20px',
-    borderRadius:10,
-    color: 'grey'
   })
-  const ButtonComprar = styled(Button)({
-    border: 'none',
-    textDecoration: 'none',
-    margin: '20px 4px',
-    borderRadius: 10,
-    backgroundImage: 'linear-gradient(to left, #FFE3E3, #EC805C)',
-    width: '7%',
-    height:'6%',
-    cursor: 'pointer',
-    '&:hover': {
-      color: 'white',
-      fontSize: '90%',
-      '&:active': {
-        color: 'black',
-      }
-    }
-  });
-  const ButtonVender = styled(Button)({
-    backgroundImage: 'linear-gradient(to left, #FFE3E3, #EC805C)',
-    color: 'white',
+
+  const BotaoVender = styled(Button)({
     border: 'none',
     padding: '8px 10px',
-    textDecoration: 'none',
     margin: '20px 4px',
     borderRadius: '10px',
     width: '7%',
@@ -92,24 +62,21 @@ const StyledBadge = withStyles((theme) => ({
 
       <TextFieldPesquisar id="outlined-search" label="Pesquisar" type="search" variant="outlined" />
 
-
-      <InputSearch 
-          placeholder='pesquisar'/>
-
-      <ButtonComprar item xs={3} color="primary">Comprar</ButtonComprar>
-
       <IconButton aria-label="cart">
-      <StyledBadge anchorOrigin={{
-      vertical: 'top',
-      horizontal: 'right',
-      }} 
-      badgeContent={6} color="secondary">
-      <ShoppingCartIcon color="primary"/>
-      </StyledBadge>
+        <StyledBadge anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+          }} 
+          badgeContent={6} color="secondary">
+          <ShoppingCartIcon color="primary"/>
+        </StyledBadge>
       </IconButton>
+      
+      <Button variant="outlined" size="small" color="secondary">
+        Vender
+      </Button>
 
-
-      <ButtonVender color="secondary">vender</ButtonVender>
+      <BotaoVender color="primary">vender</BotaoVender>
     </HeaderContainer>
 
     )

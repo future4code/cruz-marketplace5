@@ -29,6 +29,9 @@ const HeaderContainer = styled.div`
 	margin: 0;
 `
 const Body = styled.body`
+<<<<<<< HEAD
+  `
+=======
   
 `
 const InputSearch = styled.input`
@@ -79,6 +82,7 @@ const ButtonVender = styled(Button)({
     }
   }
 });
+>>>>>>> 836dd31bb9ba5f0df3f85fff8a9beec886c3e26e
 
 
 
