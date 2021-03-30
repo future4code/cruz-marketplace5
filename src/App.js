@@ -16,11 +16,7 @@ import Header from './components/Header/Header'
 
 const Body = styled.body`
   `
-const TextFieldPesquisar = styled(TextField)({
-  marginTop:'20px',
-  borderRadius:10,
-  color: 'grey'
-})
+
 
 
 export default class App extends React.Component {
