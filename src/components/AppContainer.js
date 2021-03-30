@@ -12,7 +12,6 @@ const Principal = styled.div`
   display:flex;
   flex-direction:column;
   height:150vh;
-  background-color: #FFE3E3;
 `
 const Carrossel = styled.div`
   display:flex;
@@ -49,6 +48,31 @@ const DescricaoProdutos =styled.div`
   display:flex;
   flex-direction:column;
 `
+const BotaoVerPlaylist = styled.button`
+  background-color: #545863;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 35px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  border-radius: 15px;
+  border-style: dotted dashed solid double;
+  &:hover {
+    background-color: #EC805C;
+    color: white;
+    font-size: 100%;
+    border: 2px solid #545863;
+    border-style: dotted dashed solid double;
+    &:active {
+      background-color: black;
+      color: #EC805C;
+    }
+  }
+`;
 export class AppContainer extends React.Component {
 
   state = {
@@ -75,9 +99,9 @@ export class AppContainer extends React.Component {
                 <Imagens src={produtos.photos}></Imagens>
                 <DescricaoProdutos>
                   <div>{produtos.name}</div>
-                  <div>R$:{produtos.price},0</div>
+                  <div>R${produtos.price},00</div>
                 </DescricaoProdutos>
-                <button>Comprar</button>
+                <BotaoVerPlaylist>Comprar</BotaoVerPlaylist>
             </ProdutosTela>
     })
 
