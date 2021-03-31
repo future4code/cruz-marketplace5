@@ -83,7 +83,7 @@ export default class App extends React.Component {
     maxPreco: '',
     minPreco: '',
     nameProduto: '',
-  
+  };
   mudarPagina = () => {
     if(this.state.pagina === 'home') {
       this.setState({pagina: 'vender'})
