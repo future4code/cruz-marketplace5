@@ -25,11 +25,14 @@ const Produtos = styled.div`
 `
 const ProdutosPai = styled.div`
   display:grid;
-  grid-template-columns:repeat(6, 200px);;
+  grid-template-columns:repeat(6, 200px);
   justify-content:center;
   grid-gap:15px;
   width:100%;
-  height:70%;
+  height:50%;
+  @media(max-width:600px){
+    grid-template-columns:repeat(2,150px);
+  }
 `
 const ProdutosTela = styled.div`
     border:1px inset #EC805C;
