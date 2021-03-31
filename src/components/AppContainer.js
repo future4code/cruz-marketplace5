@@ -53,7 +53,7 @@ const DescricaoProdutos = styled.div`
   display:flex;
   flex-direction:column;
 `
-const BotaoVerPlaylist = styled.button`
+const BotaoComprar = styled.button`
   background-color: #545863;
   color: white;
   padding: 8px 20px;
@@ -112,7 +112,7 @@ export class AppContainer extends React.Component {
                   <div>{produtos.name}</div>
                   <div>R${produtos.price},00</div>
                 </DescricaoProdutos>
-                <BotaoVerPlaylist>Comprar</BotaoVerPlaylist>
+                <BotaoComprar>Comprar</BotaoComprar>
             </ProdutosTela>
             console.log("teste");
     })
