@@ -78,6 +78,8 @@ const BotaoVerPlaylist = styled.button`
     }
   }
 `;
+
+
 export class AppContainer extends React.Component {
 
   state = {
@@ -97,8 +99,13 @@ export class AppContainer extends React.Component {
     }
   };
 
+  pesquisarProdutos = () => {
+    return this.state.showProducts
+      .filter((produtos) => this.props.namePesquisar ? produtos.name.toLowerCase().includes(this.props.namePesquisar) : true)
+  }
+
   render() {
-    const mostrarTela = this.state.showProducts.map((produtos) => {
+    const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
                 <Imagens src={produtos.photos}></Imagens>
                 <DescricaoProdutos>
