@@ -111,6 +111,8 @@ export default class App extends React.Component {
         return  <BotaoVender onClick={this.mudarPagina} variant="outlined" size="small" color="secondary">
                   Home
                 </BotaoVender>
+      default:
+        <div></div>
     }
   }
   onChangePesquisar = (event) => {

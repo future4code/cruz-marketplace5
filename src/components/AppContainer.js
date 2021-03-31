@@ -8,42 +8,32 @@ import carrossel1 from './img/carrossel-1.png';
 import carrossel2 from './img/carrossel-2.jpg';
 import carrossel3 from './img/carrossel-3.png';
 
-
 const Principal = styled.div`
   display:flex;
   flex-direction:column;
-  height:250vh;
-`
-const Carrossel = styled.div`
-  display:flex;
-  border:1px solid black;
-  flex:1;
+  height:200vh;
 `
 
 const Produtos = styled.div`
   display:flex;
   flex:1;
   justify-content:center;
-  align-items:center;
-  width:100%;
-  margin:10px 0;
+  align-items:flex-start;
+  margin-top:20px;
 `
 const ProdutosPai = styled.div`
   display:grid;
-  grid-template-columns:300px 300px 300px ;
-  padding:50px;
+  grid-template-columns:200px 200px 200px 200px 200px 200px;
   justify-content:center;
-  grid-gap:2px;
+  grid-gap:3px;
   width:100%;
-  height:100%;
+  height:50%;
 `
 const ProdutosTela = styled.div`
     border:1px solid black;
     display:flex;
-    justify-content:center;
     align-items:center;
     flex-direction:column;
-
 `
 const Imagens = styled.img`
     width:100px;
@@ -114,7 +104,6 @@ export class AppContainer extends React.Component {
                 </DescricaoProdutos>
                 <BotaoComprar>Comprar</BotaoComprar>
             </ProdutosTela>
-            console.log("teste");
     })
 
     return (
@@ -131,9 +120,9 @@ export class AppContainer extends React.Component {
           </div>
         </Carousel>
         <Produtos>
-            <ProdutosPai>
-                {mostrarTela}
-            </ProdutosPai>
+          <ProdutosPai>
+            {mostrarTela}
+          </ProdutosPai>
         </Produtos>
       </Principal>
     );
