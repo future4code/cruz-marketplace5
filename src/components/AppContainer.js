@@ -8,6 +8,7 @@ import carrossel1 from './img/carrossel-1.png';
 import carrossel2 from './img/carrossel-2.jpg';
 import carrossel3 from './img/carrossel-3.png';
 
+
 const Principal = styled.div`
   display:flex;
   flex-direction:column;
