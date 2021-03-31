@@ -74,16 +74,16 @@ const DivPesquisar = styled.div`
 
 
 export default class App extends React.Component {
-
+ 
   state = {
     pagina: 'home',
     pesquisar: '',
+
     count:0,
     maxPreco: '',
     minPreco: '',
     nameProduto: '',
-  }
-
+  
   mudarPagina = () => {
     if(this.state.pagina === 'home') {
       this.setState({pagina: 'vender'})
@@ -98,7 +98,8 @@ export default class App extends React.Component {
         return <AppContainer
         pesquisar = {this.state.pesquisar}
         onChangePesquisar = {this.onChangePesquisar}
-        count = {this.state.count}
+        filtroNome = {this.state.filtroNome}
+        onChangePesquisaFiltro = {this.onChangePesquisaFiltro}
          />;
       case 'vender':
         return <SellerPage />;
@@ -142,6 +143,9 @@ export default class App extends React.Component {
     this.setState({pesquisar: event.target.value})
   }
 
+  onChangenameProduto = (event) =>{
+    this.setState({nameProduto:event.target.value})
+  }
 	render() {
 		return(
 			<ThemeProvider theme={theme}>

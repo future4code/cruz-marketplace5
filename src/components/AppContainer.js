@@ -84,7 +84,7 @@ const InputPesquisar = withStyles({
 
 
 export class AppContainer extends React.Component {
-
+  
   state = {
     showProducts: [],
     sort: 'decrescente'
@@ -109,6 +109,7 @@ export class AppContainer extends React.Component {
       .filter((produtos) => this.props.minPreco ? produtos.price > this.props.minPreco : true)
       .filter((produtos) => this.props.nameProduto ? produtos.name.toLowerCase().includes(this.props.nameProduto) : true)
       .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
+
       .sort((a, b) => this.state.sort === "crescente" ? a.cost - b.cost : b.cost - a.cost)
     }
 
@@ -130,7 +131,7 @@ export class AppContainer extends React.Component {
                 </BotaoComprar>            
         </ProdutosTela>
     })
-
+    
     return (
       <Principal>
         <Carousel autoPlay infiniteLoop showStatus={false} showThumbs={false} >
@@ -150,9 +151,8 @@ export class AppContainer extends React.Component {
               id="custom-css-standard-input" 
               label="Nome" 
               type="search" 
-              value={this.pesquisar} 
-              onChange={this.onChangePesquisar}
-              pesquisar = {this.state.pesquisar}
+              value={this.props.nameProduto} 
+              onChange={this.props.onChangenameProduto}
             />
             <InputPesquisar 
               id="custom-css-standard-input" 
