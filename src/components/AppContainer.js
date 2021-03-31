@@ -119,6 +119,7 @@ export class AppContainer extends React.Component {
             <img src={carrossel3} />
           </div>
         </Carousel>
+        
         <Produtos>
           <ProdutosPai>
             {mostrarTela}
