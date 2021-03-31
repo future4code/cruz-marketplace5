@@ -89,9 +89,10 @@ const Botoes = styled.div`
 `
 
 export class AppContainer extends React.Component {
-
+  
   state = {
-    showProducts: []
+    showProducts: [],
+    countTeste:0
   }
 
   componentDidMount() {
@@ -107,12 +108,19 @@ export class AppContainer extends React.Component {
     }
   };
 
+  count = () =>{
+    this.state.countTeste =101;
+    this.state.countTeste = this.props.count;
+    console.log("propsApps",this.props.count);
+    console.log("propsAppContainer",this.state.countTeste);
+  }
   pesquisarProdutos = () => {
     return this.state.showProducts
       .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
   }
-
+  
   render() {
+    this.count();
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
                 <Imagens src={produtos.photos}></Imagens>
@@ -123,7 +131,7 @@ export class AppContainer extends React.Component {
                 <BotaoComprar>Comprar</BotaoComprar>
             </ProdutosTela>
     })
-
+    
     return (
       <Principal>
         <Carousel autoPlay infiniteLoop showStatus={false} showThumbs={false} >

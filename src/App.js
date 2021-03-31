@@ -74,13 +74,13 @@ const DivPesquisar = styled.div`
 
 
 export default class App extends React.Component {
-
+ 
   state = {
     pagina: 'home',
     pesquisar: '',
     count:0
   }
-
+  
   mudarPagina = () => {
     if(this.state.pagina === 'home') {
       this.setState({pagina: 'vender'})
@@ -140,6 +140,7 @@ export default class App extends React.Component {
   }
 
 	render() {
+    console.log("propssssss:",this.state.count);
 		return(
 			<ThemeProvider theme={theme}>
 
