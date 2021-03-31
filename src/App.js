@@ -78,8 +78,11 @@ export default class App extends React.Component {
   state = {
     pagina: 'home',
     pesquisar: '',
-    filtroNome:''
-  }
+
+    count:0,
+    maxPreco: '',
+    minPreco: '',
+    nameProduto: '',
   
   mudarPagina = () => {
     if(this.state.pagina === 'home') {
@@ -140,8 +143,8 @@ export default class App extends React.Component {
     this.setState({pesquisar: event.target.value})
   }
 
-  onChangePesquisaFiltro = (event) =>{
-    this.setState({filtroNome:event.target.value})
+  onChangenameProduto = (event) =>{
+    this.setState({nameProduto:event.target.value})
   }
 	render() {
 		return(
