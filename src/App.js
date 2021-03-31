@@ -12,11 +12,11 @@ import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingBasket';
 import SellerPage from './components/SellerPage/SellerPage';
 
+
 const IconCartButton = styled(IconButton)({
   right: '50px',
   top:'5px',
 })
-
 const StyledBadge = withStyles((theme) => ({
     badge: {
       right: -3,
@@ -27,8 +27,7 @@ const StyledBadge = withStyles((theme) => ({
         color:'black',
       }
     },
-  }))(Badge);
-  
+}))(Badge); 
 const HeaderContainer = styled.div`
   background-color:#545863;
   display: flex;
@@ -37,7 +36,6 @@ const HeaderContainer = styled.div`
   padding: 0;
   margin: 0;
 `
-
 const Body = styled.body`
 `
 const BotaoVender = styled(Button)({
@@ -70,13 +68,16 @@ const InputPesquisar = withStyles({
     },
   },
 })(TextField);
+const DivPesquisar = styled.div`
+  margin-left: 203px; 
+`
 
 
 export default class App extends React.Component {
 
   state = {
     pagina: 'home',
-    namePesquisar: '',
+    pesquisar: '',
   }
 
   mudarPagina = () => {
@@ -91,7 +92,7 @@ export default class App extends React.Component {
     switch(this.state.pagina) {
       case 'home':
         return <AppContainer
-        namePesquisar = {this.state.namePesquisar}
+        pesquisar = {this.state.pesquisar}
         onChangePesquisar = {this.onChangePesquisar}
          />;
       case 'vender':
@@ -115,8 +116,25 @@ export default class App extends React.Component {
         <div></div>
     }
   }
+
+  botaoPesquisar = () => {
+    switch (this.state.pagina){
+      case 'home':
+        return  <InputPesquisar 
+                  id="custom-css-standard-input" 
+                  label="Pesquisar" 
+                  type="search" 
+                  value={this.pesquisar} 
+                  onChange={this.onChangePesquisar}
+                  pesquisar = {this.state.pesquisar}
+                />
+      case 'vender':
+        return <DivPesquisar></DivPesquisar>
+    }
+  }
+
   onChangePesquisar = (event) => {
-    this.setState({namePesquisar: event.target.value})
+    this.setState({pesquisar: event.target.value})
   }
 
 	render() {
@@ -126,16 +144,7 @@ export default class App extends React.Component {
     <HeaderContainer>
       <h1>Logo</h1>
 
-      <InputPesquisar 
-        id="custom-css-standard-input" 
-        label="Pesquisar" 
-        type="search" 
-        value={this.namePesquisar} 
-        onChange={this.onChangePesquisar}
-        namePesquisar = {this.state.namePesquisar}
-      />
-
-      
+      {this.botaoPesquisar()}
 
       {this.botaoSellerPage()}
 
