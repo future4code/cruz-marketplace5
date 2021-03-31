@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import Footer from './components/Footer/Footer'
 import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from './theme'
-import Vender from './components/Vender/Vender'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingBasket';
+import SellerPage from './components/SellerPage/SellerPage';
 
 const IconCartButton = styled(IconButton)({
   right: '50px',
@@ -95,7 +95,7 @@ export default class App extends React.Component {
         onChangePesquisar = {this.onChangePesquisar}
          />;
       case 'vender':
-        return <Vender />;
+        return <SellerPage />;
       default:
         return <div></div>;
     }
