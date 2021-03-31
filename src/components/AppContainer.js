@@ -85,9 +85,10 @@ const InputPesquisar = withStyles({
 })(TextField);
 
 export class AppContainer extends React.Component {
-
+  
   state = {
-    showProducts: []
+    showProducts: [],
+    countTeste:0
   }
 
   componentDidMount() {
@@ -106,8 +107,9 @@ export class AppContainer extends React.Component {
   pesquisarProdutos = () => {
     return this.state.showProducts
       .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
+      .filter((produtos) => this.props.filtroNome ? produtos.name.toLowerCase().includes(this.props.filtroNome) : true)
   }
-
+  
   render() {
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
@@ -121,7 +123,7 @@ export class AppContainer extends React.Component {
                 </BotaoComprar>            
         </ProdutosTela>
     })
-
+    
     return (
       <Principal>
         <Carousel autoPlay infiniteLoop showStatus={false} showThumbs={false} >
@@ -141,9 +143,8 @@ export class AppContainer extends React.Component {
               id="custom-css-standard-input" 
               label="Nome" 
               type="search" 
-              value={this.pesquisar} 
-              onChange={this.onChangePesquisar}
-              pesquisar = {this.state.pesquisar}
+              value={this.props.filtroNome} 
+              onChange={this.props.onChangePesquisaFiltro}
             />
             <InputPesquisar 
               id="custom-css-standard-input" 

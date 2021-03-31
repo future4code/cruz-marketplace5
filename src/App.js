@@ -74,13 +74,13 @@ const DivPesquisar = styled.div`
 
 
 export default class App extends React.Component {
-
+ 
   state = {
     pagina: 'home',
     pesquisar: '',
-    count:0
+    filtroNome:''
   }
-
+  
   mudarPagina = () => {
     if(this.state.pagina === 'home') {
       this.setState({pagina: 'vender'})
@@ -95,7 +95,8 @@ export default class App extends React.Component {
         return <AppContainer
         pesquisar = {this.state.pesquisar}
         onChangePesquisar = {this.onChangePesquisar}
-        count = {this.state.count}
+        filtroNome = {this.state.filtroNome}
+        onChangePesquisaFiltro = {this.onChangePesquisaFiltro}
          />;
       case 'vender':
         return <SellerPage />;
@@ -139,6 +140,9 @@ export default class App extends React.Component {
     this.setState({pesquisar: event.target.value})
   }
 
+  onChangePesquisaFiltro = (event) =>{
+    this.setState({filtroNome:event.target.value})
+  }
 	render() {
 		return(
 			<ThemeProvider theme={theme}>
