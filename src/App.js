@@ -78,7 +78,10 @@ export default class App extends React.Component {
   state = {
     pagina: 'home',
     pesquisar: '',
-    count:0
+    count:0,
+    maxPreco: '',
+    minPreco: '',
+    nameProduto: '',
   }
 
   mudarPagina = () => {

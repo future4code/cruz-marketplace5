@@ -16,7 +16,6 @@ const Principal = styled.div`
   flex-direction:column;
   height:200vh;
 `
-
 const Produtos = styled.div`
   display:flex;
   flex:1;
@@ -57,7 +56,6 @@ const DescricaoProdutos = styled.div`
 const BotaoComprar = styled(Button)({
   top:'30px',
 });
-
 const Filtros = styled.div`
   background-color:lightgray;
   display:flex;
@@ -84,10 +82,12 @@ const InputPesquisar = withStyles({
   },
 })(TextField);
 
+
 export class AppContainer extends React.Component {
 
   state = {
-    showProducts: []
+    showProducts: [],
+    sort: 'decrescente'
   }
 
   componentDidMount() {
@@ -105,8 +105,17 @@ export class AppContainer extends React.Component {
 
   pesquisarProdutos = () => {
     return this.state.showProducts
+      .filter((produtos) => this.props.maxPreco ? produtos.price < this.props.maxPreco : true)
+      .filter((produtos) => this.props.minPreco ? produtos.price > this.props.minPreco : true)
+      .filter((produtos) => this.props.nameProduto ? produtos.name.toLowerCase().includes(this.props.nameProduto) : true)
       .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
-  }
+      .sort((a, b) => this.state.sort === "crescente" ? a.cost - b.cost : b.cost - a.cost)
+    }
+
+  onChangeSort = (event) => {
+    this.setState({sort: event.target.value});
+}
+
 
   render() {
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
@@ -165,8 +174,8 @@ export class AppContainer extends React.Component {
               id="custom-css-standard-input" 
               label="Ordenar" 
               type="search" 
-              value={this.pesquisar} 
-              onChange={this.onChangePesquisar}
+              value={this.state.sort} 
+              onChange={this.onChangeSort}
               pesquisar = {this.state.pesquisar}
             />
           </Botoes>
