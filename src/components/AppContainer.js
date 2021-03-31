@@ -23,19 +23,21 @@ const Produtos = styled.div`
 `
 const ProdutosPai = styled.div`
   display:grid;
-  grid-template-columns:200px 200px 200px 200px 200px 200px;
+  grid-template-columns:repeat(6, 200px);;
   justify-content:center;
-  grid-gap:3px;
+  grid-gap:15px;
   width:100%;
   height:50%;
 `
 const ProdutosTela = styled.div`
-    border:1px solid black;
+    border:3px inset #EC805C;
     display:flex;
     align-items:center;
     flex-direction:column;
+    border-radius: 15px;
 `
 const Imagens = styled.img`
+    margin-top:10px;
     width:100px;
     height:100px;
 `
@@ -91,7 +93,7 @@ export class AppContainer extends React.Component {
 
   pesquisarProdutos = () => {
     return this.state.showProducts
-      .filter((produtos) => this.props.namePesquisar ? produtos.name.toLowerCase().includes(this.props.namePesquisar) : true)
+      .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
   }
 
   render() {
