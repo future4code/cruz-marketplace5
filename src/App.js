@@ -14,13 +14,13 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingBasket';
 
 const IconCartButton = styled(IconButton)({
   right: '50px',
-
+  top:'5px',
 })
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
       right: -3,
-      top: 13,
+      top: 15,
       border: `2px solid ${theme.palette.background.paper}`,
       padding: '4px 4px',
       '&:hover':{
@@ -38,17 +38,11 @@ const HeaderContainer = styled.div`
   margin: 0;
 `
 
-const TextFieldPesquisar = styled(TextField)({
-  top: '15px',
-  right: '200px',
-  width: '15%',
-
-  })
 const Body = styled.body`
 `
 const BotaoVender = styled(Button)({
   left: '200px',
-  top: '28px',
+  top: '35px',
   border: 'none',
   padding: '8px 10px',
   margin: '20px 4px',
@@ -63,11 +57,26 @@ const BotaoVender = styled(Button)({
     }
   }
 });
+const InputPesquisar = withStyles({
+  root: {
+    top: '15px',
+    right: '200px',
+    width: '15%',
+    '& label.Mui-focused': {
+      color: '#EC805C',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#EC805C',
+    },
+  },
+})(TextField);
+
 
 export default class App extends React.Component {
 
   state = {
     pagina: 'home',
+    namePesquisar: '',
   }
 
   mudarPagina = () => {
@@ -81,7 +90,10 @@ export default class App extends React.Component {
   renderizaPagina = () => {
     switch(this.state.pagina) {
       case 'home':
-        return <AppContainer />;
+        return <AppContainer
+        namePesquisar = {this.state.namePesquisar}
+        onChangePesquisar = {this.onChangePesquisar}
+         />;
       case 'vender':
         return <Vender />;
       default:
@@ -101,6 +113,9 @@ export default class App extends React.Component {
                 </BotaoVender>
     }
   }
+  onChangePesquisar = (event) => {
+    this.setState({namePesquisar: event.target.value})
+  }
 
 	render() {
 		return(
@@ -109,13 +124,16 @@ export default class App extends React.Component {
     <HeaderContainer>
       <h1>Logo</h1>
 
-      <TextFieldPesquisar 
-        id="outlined-search" 
+      <InputPesquisar 
+        id="custom-css-standard-input" 
         label="Pesquisar" 
         type="search" 
-        variant="outlined" 
-        color="secondary" 
+        value={this.namePesquisar} 
+        onChange={this.onChangePesquisar}
+        namePesquisar = {this.state.namePesquisar}
       />
+
+      
 
       {this.botaoMudarPagina()}
 
