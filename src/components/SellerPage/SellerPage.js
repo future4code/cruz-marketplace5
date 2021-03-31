@@ -1,12 +1,40 @@
 import React from "react"
 import axios from "axios"
 import styled from "styled-components"
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
 
 const SellerContainer = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
 `
+const InputPesquisar = withStyles({
+    root: {
+      width: '20%',
+      padding:'10px',
+      '& label.Mui-focused': {
+        color: '#EC805C',
+      },
+      '& .MuiInput-underline:after': {
+        borderBottomColor: '#EC805C',
+      },
+    },
+  })(TextField);
+
+const BotaoVender = styled(Button)({
+    width: '7%',
+    height: '6%',
+    cursor: 'pointer',
+    '&:hover': {
+      fontSize: '80%',
+      '&:active': {
+        color: '#EC805C',
+      }
+    }
+});
 
 export default class SellerPage extends React.Component {
     state = {
@@ -79,36 +107,64 @@ export default class SellerPage extends React.Component {
     render() {
         return (
             <SellerContainer>
-                <h2> Adicionar um produto para venda </h2>
-                <label> Nome </label>
-                <input
+
+                <InputPesquisar 
+                    id="custom-css-standard-input" 
+                    label="Nome" 
+                    type="search" 
                     value={this.state.name}
-                    onChange={this.productName}/>
-                <label> Preço </label>
-                <input
+                    onChange={this.productName}
+                />
+                <InputPesquisar 
+                    id="custom-css-standard-input" 
+                    label="Preço" 
+                    type="search" 
                     value={this.state.price}
-                    onChange={this.productPrice}/>
-                <label> Pagamento </label>
-                <input
+                    onChange={this.productPrice}
+                />
+                <InputPesquisar 
+                    id="custom-css-standard-input" 
+                    label="Pagamento" 
+                    type="search" 
                     value={this.state.paymentMethod}
-                    onChange={this.productPayment}/>
-                <label> Nº Parcelas </label>
-                <input
+                    onChange={this.productPayment}
+                />
+                <InputPesquisar 
+                    id="custom-css-standard-input" 
+                    label="Nº Parcelas" 
+                    type="search" 
                     value={this.state.installments}
-                    onChange={this.productInstallment}/>
-                <label> Categoria </label>
-                <input
+                    onChange={this.productInstallment}
+                />
+                <InputPesquisar 
+                    id="custom-css-standard-input" 
+                    label="Categoria" 
+                    type="search" 
                     value={this.state.category}
-                    onChange={this.productCategory}/>
-                <label> Descrição </label>
-                <input
-                    value={this.state.description}
-                    onChange={this.productDescription}/>
-                <label> Foto do produto</label>
-                <input
-                    value={this.state.photos}
-                    onChange={this.productImage}/>
-                <button type="submit" onClick={this.createProductSale}> Enviar!</button>
+                    onChange={this.productCategory}
+                />
+                <InputPesquisar 
+                    id="custom-css-standard-input" 
+                    label="Descrição" 
+                    type="search" 
+                    value={this.state.description} 
+                    onChange={this.productDescription}
+                />
+                <InputPesquisar 
+                    id="custom-css-standard-input" 
+                    label="Foto do produto" 
+                    type="search" 
+                    value={this.state.photos} 
+                    onChange={this.productImage}
+                />
+                <BotaoVender type="submit" 
+                    variant="outlined" 
+                    size="small" 
+                    color="primary" 
+                    onClick={this.createProductSale}>
+                        Enviar
+                </BotaoVender>
+
             </SellerContainer>
         )
     }

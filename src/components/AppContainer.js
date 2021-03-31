@@ -52,7 +52,7 @@ const DescricaoProdutos = styled.div`
   display:flex;
   flex-direction:column;
 `
-const BotaoVerPlaylist = styled.button`
+const BotaoComprar = styled.button`
   background-color: #545863;
   color: white;
   padding: 8px 20px;
@@ -106,13 +106,13 @@ export class AppContainer extends React.Component {
   render() {
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
-        <Imagens src={produtos.photos}></Imagens>
-        <DescricaoProdutos>
-          <div>{produtos.name}</div>
-          <div>R${produtos.price},00</div>
-        </DescricaoProdutos>
-        <BotaoVerPlaylist>Comprar</BotaoVerPlaylist>
-      </ProdutosTela>
+                <Imagens src={produtos.photos}></Imagens>
+                <DescricaoProdutos>
+                  <div>{produtos.name}</div>
+                  <div>R${produtos.price},00</div>
+                </DescricaoProdutos>
+                <BotaoComprar>Comprar</BotaoComprar>
+            </ProdutosTela>
     })
 
     return (
