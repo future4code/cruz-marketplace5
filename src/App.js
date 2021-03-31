@@ -78,6 +78,7 @@ export default class App extends React.Component {
   state = {
     pagina: 'home',
     pesquisar: '',
+    count:0
   }
 
   mudarPagina = () => {
@@ -94,6 +95,7 @@ export default class App extends React.Component {
         return <AppContainer
         pesquisar = {this.state.pesquisar}
         onChangePesquisar = {this.onChangePesquisar}
+        count = {this.state.count}
          />;
       case 'vender':
         return <SellerPage />;
