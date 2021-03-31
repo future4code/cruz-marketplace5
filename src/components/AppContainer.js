@@ -7,6 +7,8 @@ import { Carousel } from 'react-responsive-carousel';
 import carrossel1 from './img/carrossel-1.png';
 import carrossel2 from './img/carrossel-2.jpg';
 import carrossel3 from './img/carrossel-3.png';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 const Principal = styled.div`
   display:flex;
@@ -27,49 +29,30 @@ const ProdutosPai = styled.div`
   justify-content:center;
   grid-gap:15px;
   width:100%;
-  height:50%;
+  height:70%;
 `
 const ProdutosTela = styled.div`
-    border:3px inset #EC805C;
+    border:1px inset #EC805C;
     display:flex;
     align-items:center;
     flex-direction:column;
     border-radius: 15px;
 `
 const Imagens = styled.img`
-    margin-top:10px;
+    margin-top:20px;
     width:100px;
     height:100px;
 `
 const DescricaoProdutos = styled.div`
   display:flex;
   flex-direction:column;
+  margin-top: 15px;
+  text-align:center;
+  color:#EC805C;
 `
-const BotaoComprar = styled.button`
-  background-color: #545863;
-  color: white;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 35px;
-  transition-duration: 0.5s;
-  cursor: pointer;
-  border-radius: 15px;
-  border-style: dotted dashed solid double;
-  &:hover {
-    background-color: #EC805C;
-    color: white;
-    font-size: 100%;
-    border: 2px solid #545863;
-    border-style: dotted dashed solid double;
-    &:active {
-      background-color: black;
-      color: #EC805C;
-    }
-  }
-`;
+const BotaoComprar = styled(Button)({
+  top:'30px',
+});
 
 const Filtros = styled.div`
   background-color:lightgray;
@@ -114,11 +97,13 @@ export class AppContainer extends React.Component {
       return <ProdutosTela>
                 <Imagens src={produtos.photos}></Imagens>
                 <DescricaoProdutos>
-                  <div>{produtos.name}</div>
+                  <p><b>{produtos.name}</b></p>
                   <div>R${produtos.price},00</div>
                 </DescricaoProdutos>
-                <BotaoComprar>Comprar</BotaoComprar>
-            </ProdutosTela>
+                <BotaoComprar variant="outlined" size="medium" color="secondary">
+                  Comprar
+                </BotaoComprar>            
+        </ProdutosTela>
     })
 
     return (
