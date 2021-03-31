@@ -131,7 +131,7 @@ export default class SellerPage extends React.Component {
 
                 <Input
                     id="custom-css-standard-input" 
-                    label="Nome" 
+                    label="Nome do Produto" 
                     type="search" 
                     value={this.state.name}
                     onChange={this.productName}
