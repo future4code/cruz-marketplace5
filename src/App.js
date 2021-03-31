@@ -101,7 +101,7 @@ export default class App extends React.Component {
     }
   };
 
-  botaoMudarPagina = () => {
+  botaoSellerPage = () => {
     switch (this.state.pagina){
       case 'home':
         return  <BotaoVender onClick={this.mudarPagina} variant="outlined" size="small" color="secondary">
@@ -135,7 +135,7 @@ export default class App extends React.Component {
 
       
 
-      {this.botaoMudarPagina()}
+      {this.botaoSellerPage()}
 
       <IconCartButton aria-label="cart">
         <StyledBadge anchorOrigin={{
