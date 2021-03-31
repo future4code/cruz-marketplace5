@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import ReactDOM from 'react-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import carrossel1 from './img/carrossel-1.png';
 import carrossel2 from './img/carrossel-2.jpg';
 import carrossel3 from './img/carrossel-3.png';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+
 
 const Principal = styled.div`
   display:flex;
@@ -27,66 +30,59 @@ const ProdutosPai = styled.div`
   justify-content:center;
   grid-gap:15px;
   width:100%;
-  height:50%;
+  height:75%;
   @media(max-width:600px){
     grid-template-columns:repeat(2,150px);
   }
 `
 const ProdutosTela = styled.div`
-    border:3px inset #EC805C;
+    border:1px inset #EC805C;
     display:flex;
     align-items:center;
     flex-direction:column;
     border-radius: 15px;
 `
 const Imagens = styled.img`
-    margin-top:10px;
+    margin-top:20px;
     width:100px;
     height:100px;
 `
 const DescricaoProdutos = styled.div`
   display:flex;
   flex-direction:column;
+  margin-top: 15px;
+  text-align:center;
+  color:#EC805C;
 `
-const BotaoComprar = styled.button`
-  background-color: #545863;
-  color: white;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 35px;
-  transition-duration: 0.5s;
-  cursor: pointer;
-  border-radius: 15px;
-  border-style: dotted dashed solid double;
-  &:hover {
-    background-color: #EC805C;
-    color: white;
-    font-size: 100%;
-    border: 2px solid #545863;
-    border-style: dotted dashed solid double;
-    &:active {
-      background-color: black;
-      color: #EC805C;
-    }
-  }
-`;
+const BotaoComprar = styled(Button)({
+  top:'30px',
+});
 
 const Filtros = styled.div`
   background-color:lightgray;
   display:flex;
   height:5%;
-  margin:10px 10px;
+  margin:10px 33px;
   justify-content:center;
   align-items:center;
+  border-radius:10px;
 `
 const Botoes = styled.div`
       display:flex;
       width:100%;
       justify-content:space-evenly;
 `
+const InputPesquisar = withStyles({
+  root: {
+    width: '15%',
+    '& label.Mui-focused': {
+      color: '#EC805C',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#EC805C',
+    },
+  },
+})(TextField);
 
 export class AppContainer extends React.Component {
   
@@ -125,11 +121,13 @@ export class AppContainer extends React.Component {
       return <ProdutosTela>
                 <Imagens src={produtos.photos}></Imagens>
                 <DescricaoProdutos>
-                  <div>{produtos.name}</div>
+                  <p><b>{produtos.name}</b></p>
                   <div>R${produtos.price},00</div>
                 </DescricaoProdutos>
-                <BotaoComprar>Comprar</BotaoComprar>
-            </ProdutosTela>
+                <BotaoComprar variant="outlined" size="medium" color="secondary">
+                  Comprar
+                </BotaoComprar>            
+        </ProdutosTela>
     })
     
     return (
@@ -147,10 +145,38 @@ export class AppContainer extends React.Component {
         </Carousel>
         <Filtros>
           <Botoes>
-            <button>Nome</button>
-            <button>Preço</button>
-            <button>Categoria</button>
-            <button>Ordenar</button>
+            <InputPesquisar 
+              id="custom-css-standard-input" 
+              label="Nome" 
+              type="search" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
+            <InputPesquisar 
+              id="custom-css-standard-input" 
+              label="Preço" 
+              type="search" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
+            <InputPesquisar 
+              id="custom-css-standard-input" 
+              label="Categoria" 
+              type="search" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
+            <InputPesquisar 
+              id="custom-css-standard-input" 
+              label="Ordenar" 
+              type="search" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
           </Botoes>
         </Filtros>
         <Produtos>
