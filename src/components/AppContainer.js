@@ -8,7 +8,6 @@ import carrossel1 from './img/carrossel-1.png';
 import carrossel2 from './img/carrossel-2.jpg';
 import carrossel3 from './img/carrossel-3.png';
 
-
 const Principal = styled.div`
   display:flex;
   flex-direction:column;
@@ -107,14 +106,13 @@ export class AppContainer extends React.Component {
   render() {
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
-                <Imagens src={produtos.photos}></Imagens>
-                <DescricaoProdutos>
-                  <div>{produtos.name}</div>
-                  <div>R${produtos.price},00</div>
-                </DescricaoProdutos>
-                <BotaoVerPlaylist>Comprar</BotaoVerPlaylist>
-            </ProdutosTela>
-            console.log("teste");
+        <Imagens src={produtos.photos}></Imagens>
+        <DescricaoProdutos>
+          <div>{produtos.name}</div>
+          <div>R${produtos.price},00</div>
+        </DescricaoProdutos>
+        <BotaoVerPlaylist>Comprar</BotaoVerPlaylist>
+      </ProdutosTela>
     })
 
     return (
@@ -131,9 +129,9 @@ export class AppContainer extends React.Component {
           </div>
         </Carousel>
         <Produtos>
-            <ProdutosPai>
-                {mostrarTela}
-            </ProdutosPai>
+          <ProdutosPai>
+            {mostrarTela}
+          </ProdutosPai>
         </Produtos>
       </Principal>
     );
