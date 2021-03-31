@@ -78,7 +78,7 @@ export default class App extends React.Component {
   state = {
     pagina: 'home',
     pesquisar: '',
-    count:0
+    filtroNome:''
   }
   
   mudarPagina = () => {
@@ -95,7 +95,8 @@ export default class App extends React.Component {
         return <AppContainer
         pesquisar = {this.state.pesquisar}
         onChangePesquisar = {this.onChangePesquisar}
-        count = {this.state.count}
+        filtroNome = {this.state.filtroNome}
+        onChangePesquisaFiltro = {this.onChangePesquisaFiltro}
          />;
       case 'vender':
         return <SellerPage />;
@@ -139,8 +140,10 @@ export default class App extends React.Component {
     this.setState({pesquisar: event.target.value})
   }
 
+  onChangePesquisaFiltro = (event) =>{
+    this.setState({filtroNome:event.target.value})
+  }
 	render() {
-    console.log("propssssss:",this.state.count);
 		return(
 			<ThemeProvider theme={theme}>
 

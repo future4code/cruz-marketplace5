@@ -104,19 +104,13 @@ export class AppContainer extends React.Component {
     }
   };
 
-  count = () =>{
-    this.state.countTeste =101;
-    this.state.countTeste = this.props.count;
-    console.log("propsApps",this.props.count);
-    console.log("propsAppContainer",this.state.countTeste);
-  }
   pesquisarProdutos = () => {
     return this.state.showProducts
       .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
+      .filter((produtos) => this.props.filtroNome ? produtos.name.toLowerCase().includes(this.props.filtroNome) : true)
   }
   
   render() {
-    this.count();
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
                 <Imagens src={produtos.photos}></Imagens>
@@ -149,9 +143,8 @@ export class AppContainer extends React.Component {
               id="custom-css-standard-input" 
               label="Nome" 
               type="search" 
-              value={this.pesquisar} 
-              onChange={this.onChangePesquisar}
-              pesquisar = {this.state.pesquisar}
+              value={this.props.filtroNome} 
+              onChange={this.props.onChangePesquisaFiltro}
             />
             <InputPesquisar 
               id="custom-css-standard-input" 
