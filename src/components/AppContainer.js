@@ -71,6 +71,19 @@ const BotaoComprar = styled.button`
   }
 `;
 
+const Filtros = styled.div`
+  background-color:lightgray;
+  display:flex;
+  height:5%;
+  margin:10px 10px;
+  justify-content:center;
+  align-items:center;
+`
+const Botoes = styled.div`
+      display:flex;
+      width:100%;
+      justify-content:space-evenly;
+`
 
 export class AppContainer extends React.Component {
 
@@ -121,6 +134,14 @@ export class AppContainer extends React.Component {
             <img src={carrossel3} />
           </div>
         </Carousel>
+        <Filtros>
+          <Botoes>
+            <button>Nome</button>
+            <button>Preço</button>
+            <button>Categoria</button>
+            <button>Ordenar</button>
+          </Botoes>
+        </Filtros>
         <Produtos>
           <ProdutosPai>
             {mostrarTela}
