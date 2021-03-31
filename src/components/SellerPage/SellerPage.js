@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
     input: {
       display: 'none',
     },
-  }));
-
+}));
 
 const SellerContainer = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-bottom: 25px;
 `
 const Input = withStyles({
     root: {
