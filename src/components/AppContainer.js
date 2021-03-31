@@ -11,7 +11,7 @@ import carrossel3 from './img/carrossel-3.png';
 const Principal = styled.div`
   display:flex;
   flex-direction:column;
-  height:150vh;
+  height:250vh;
 `
 const Carrossel = styled.div`
   display:flex;
@@ -38,13 +38,17 @@ const ProdutosPai = styled.div`
 `
 const ProdutosTela = styled.div`
     border:1px solid black;
-    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
 `
 const Imagens = styled.img`
     width:100px;
     height:100px;
 `
-const DescricaoProdutos =styled.div`
+const DescricaoProdutos = styled.div`
   display:flex;
   flex-direction:column;
 `
@@ -87,7 +91,6 @@ export class AppContainer extends React.Component {
     try {
       const response = await axios.get("https://us-central1-labenu-apis.cloudfunctions.net/fourUsedTwo/products")
       this.setState({ showProducts: response.data.products })
-      console.log("estate", this.state.showProducts);
     } catch (erro) {
       console.log("erro", erro);
     }
@@ -103,6 +106,7 @@ export class AppContainer extends React.Component {
                 </DescricaoProdutos>
                 <BotaoVerPlaylist>Comprar</BotaoVerPlaylist>
             </ProdutosTela>
+            console.log("teste");
     })
 
     return (
@@ -123,7 +127,6 @@ export class AppContainer extends React.Component {
                 {mostrarTela}
             </ProdutosPai>
         </Produtos>
-
       </Principal>
     );
   }
