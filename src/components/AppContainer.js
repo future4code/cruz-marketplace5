@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import ReactDOM from 'react-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import carrossel1 from './img/carrossel-1.png';
 import carrossel2 from './img/carrossel-2.jpg';
 import carrossel3 from './img/carrossel-3.png';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
+
 
 const Principal = styled.div`
   display:flex;
@@ -29,7 +30,7 @@ const ProdutosPai = styled.div`
   justify-content:center;
   grid-gap:15px;
   width:100%;
-  height:50%;
+  height:75%;
   @media(max-width:600px){
     grid-template-columns:repeat(2,150px);
   }
@@ -61,15 +62,27 @@ const Filtros = styled.div`
   background-color:lightgray;
   display:flex;
   height:5%;
-  margin:10px 10px;
+  margin:10px 33px;
   justify-content:center;
   align-items:center;
+  border-radius:10px;
 `
 const Botoes = styled.div`
       display:flex;
       width:100%;
       justify-content:space-evenly;
 `
+const InputPesquisar = withStyles({
+  root: {
+    width: '15%',
+    '& label.Mui-focused': {
+      color: '#EC805C',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#EC805C',
+    },
+  },
+})(TextField);
 
 export class AppContainer extends React.Component {
 
@@ -124,10 +137,38 @@ export class AppContainer extends React.Component {
         </Carousel>
         <Filtros>
           <Botoes>
-            <button>Nome</button>
-            <button>Preço</button>
-            <button>Categoria</button>
-            <button>Ordenar</button>
+            <InputPesquisar 
+              id="custom-css-standard-input" 
+              label="Nome" 
+              type="search" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
+            <InputPesquisar 
+              id="custom-css-standard-input" 
+              label="Preço" 
+              type="search" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
+            <InputPesquisar 
+              id="custom-css-standard-input" 
+              label="Categoria" 
+              type="search" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
+            <InputPesquisar 
+              id="custom-css-standard-input" 
+              label="Ordenar" 
+              type="search" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
           </Botoes>
         </Filtros>
         <Produtos>
