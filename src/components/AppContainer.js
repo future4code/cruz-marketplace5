@@ -101,7 +101,7 @@ export class AppContainer extends React.Component {
 
   pesquisarProdutos = () => {
     return this.state.showProducts
-      .filter((produtos) => this.props.namePesquisar ? produtos.name.toLowerCase().includes(this.props.namePesquisar) : true)
+      .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
   }
 
   render() {

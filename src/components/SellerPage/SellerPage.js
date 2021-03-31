@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   }));
+
 
 const SellerContainer = styled.div`
 display: flex;
@@ -36,6 +39,7 @@ const Input = withStyles({
   })(TextField);
 
 const BotaoEnviar = styled(Button)({
+    top: '10px',
     width: '7%',
     height: '6%',
     cursor: 'pointer',
@@ -167,13 +171,6 @@ export default class SellerPage extends React.Component {
                     value={this.state.description} 
                     onChange={this.productDescription}
                 />
-                {/* <Input 
-                    id="custom-css-standard-input" 
-                    label="Foto do produto" 
-                    type="submit" 
-                    value={this.state.photos} 
-                    onChange={this.productImage}
-                /> */}
                 <Botao 
                     accept="image/*"
                     id="contained-button-file"
@@ -183,8 +180,12 @@ export default class SellerPage extends React.Component {
                     onChange={this.productImage}
                 />
                 <label htmlFor="contained-button-file">
-                    <Button variant="contained" color="primary" component="span">
-                        Upload
+                    <Button variant="contained" 
+                        right='10px'
+                        color="primary" 
+                        component="span" 
+                        startIcon={<PhotoCamera />}>
+                            Enviar Foto
                     </Button>
                 </label>
 
