@@ -81,8 +81,10 @@ export default class App extends React.Component {
     minPreco: '',
     nomeProduto: '',
     categoria: '',
+    contador:0
   };
 
+  
   mudarPagina = () => {
     if(this.state.pagina === 'home') {
       this.setState({pagina: 'vender'})
@@ -91,8 +93,6 @@ export default class App extends React.Component {
     }
   };
   
-
-
   botaoSellerPage = () => {
     switch (this.state.pagina){
       case 'home':
@@ -139,7 +139,10 @@ export default class App extends React.Component {
   onChangeMinPreco = (event) => {
     this.setState({minPreco: event.target.value})
   }
-
+  
+  alteraContador = (numero) =>{
+    this.setState({contador:numero})
+  }
   renderizaPagina = () => {
     switch(this.state.pagina) {
       case 'home':
@@ -154,6 +157,7 @@ export default class App extends React.Component {
         onChangeMaxPreco = {this.onChangeMaxPreco}
         minPreco = {this.state.minPreco}
         onChangeMinPreco = {this.onChangeMinPreco}
+        alteraContador = {this.alteraContador}
          />;
       case 'vender':
         return <SellerPage />;
@@ -163,6 +167,7 @@ export default class App extends React.Component {
   };
 
 	render() {
+    
 		return(
 			<ThemeProvider theme={theme}>
 
@@ -178,7 +183,7 @@ export default class App extends React.Component {
           vertical: 'top',
           horizontal: 'right',
           }} 
-          badgeContent={6} color="secondary">
+          badgeContent={1} color="secondary">
           <ShoppingCartIcon color="secondary"/>
         </StyledBadge>
       </IconCartButton>

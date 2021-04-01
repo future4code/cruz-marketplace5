@@ -34,11 +34,10 @@ const useStyles = makeStyles((theme) => ({
 const Principal = styled.div`
   display:flex;
   flex-direction:column;
-  height:200vh;
+  min-height:100vh;
 `
 const Produtos = styled.div`
   display:flex;
-  flex:1;
   justify-content:center;
   align-items:flex-start;
   margin-top:20px;
@@ -48,6 +47,7 @@ const ProdutosPai = styled.div`
   grid-template-columns:repeat(6, 200px);
   justify-content:center;
   grid-gap:15px;
+  margin:5px;
   @media(max-width:600px){
     grid-template-columns:repeat(2,150px);
   };
@@ -149,10 +149,7 @@ export class AppContainer extends React.Component {
 
 
   render() {
-
-  
-
-  
+  this.props.alteraContador();
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
                 <Imagens src={produtos.photos}></Imagens>
