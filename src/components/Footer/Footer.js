@@ -17,7 +17,7 @@ const FooterLink = styled.div`
     display:flex;
     flex-direction:row;
     margin: 0 auto;
-    @media(max-width:400px){
+    @media(max-width:600px){
         display:grid;
         grid-template-columns:repeat(2,100px);
         grid-gap:100px;

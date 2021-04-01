@@ -19,7 +19,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   margin: 0;
   padding: 0;
-  @media(max-width:400px){
+  @media(min-width:600px){
     display:flex;
     justify-content:space-between;
   }

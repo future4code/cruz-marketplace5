@@ -69,7 +69,7 @@ const IconCartButton = styled(IconButton)({
   width: '25px',
   left: '1250px',
   bottom: '1640px',
-  '@media (max-width:400px)' : {
+  '@media (min-width:600px)' : {
       left:'300px',
       top:'-800',
       bottom:'3090px',
@@ -113,7 +113,7 @@ const ProdutosPai = styled.div`
   justify-content:center;
   grid-gap:15px;
   margin:5px;
-  @media(max-width:400px){
+  @media(min-width:600px){
     grid-template-columns:repeat(2,150px);
   };
 `
@@ -179,7 +179,7 @@ const Botoes = styled.div`
       display:flex;
       width:90%;
       justify-content:space-evenly;
-      @media(max-width:400px){
+      @media(min-width:600px){
         display:flex;
         flex-direction:column;
         justify-content:space-between;
@@ -204,7 +204,7 @@ const FinalizarCompra = styled(Button)({
   cursor: 'pointer',
   bottom: '25px',
   left: '400px',
-  '@media (max-width:400px)' : {
+  '@media (min-width:600px)' : {
     position:'relative',
     left:'180px'  
   }
@@ -215,7 +215,7 @@ const BotaoFechar = styled(Button)({
   bottom: '25px',
   left: '540px',
   position: 'absolute',
-  '@media (max-width:400px)' : {
+  '@media (min-width:600px)' : {
     position:'relative',
     left:'300px'  
   }
