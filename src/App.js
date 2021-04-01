@@ -160,13 +160,6 @@ export default class App extends React.Component {
     }
   };
 
-	render() {
-		return(
-			<ThemeProvider theme={theme}>
-
-    <HeaderContainer>
-      <h1>Logo</h1>
-
   render() {
     return (
       <ThemeProvider theme={theme}>

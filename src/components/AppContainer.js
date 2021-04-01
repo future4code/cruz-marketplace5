@@ -127,6 +127,22 @@ const Imagens = styled.img`
       transform: scale(1.1);
     };
 `
+
+const Imagens2 = styled.img`
+    margin-top:20px;
+    width:50PX;
+    height:50PX;
+    cursor: pointer;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    &:hover{
+      max-width: 150%;
+      -moz-transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    };
+`
 const DescricaoProdutos = styled.div`
   display:flex;
   flex-direction:column;
@@ -164,6 +180,35 @@ const Input = withStyles({
 })(TextField);
 
 const FinalizarCompra = styled.button`
+  background-color: #545863;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 35px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  border-radius: 15px;
+  border-style: dotted dashed solid double;
+  position: absolute;
+  bottom: 1px;
+  right: -580px;
+  &:hover {
+    background-color: green;
+    color: white;
+    font-size: 100%;
+    border: 2px solid #545863;
+    border-style: dotted dashed solid double;
+    &:active {
+      background-color: black;
+      color: #ec805c;
+    }
+  }
+`;
+
+const BotaoFechar = styled.button`
   background-color: #545863;
   color: white;
   padding: 8px 20px;
