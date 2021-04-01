@@ -19,6 +19,10 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   margin: 0;
   padding: 0;
+  @media(max-width:400px){
+    display:flex;
+    justify-content:space-between;
+  }
 `
 const Body = styled.body`
 `

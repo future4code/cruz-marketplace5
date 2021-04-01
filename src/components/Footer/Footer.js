@@ -17,6 +17,13 @@ const FooterLink = styled.div`
     display:flex;
     flex-direction:row;
     margin: 0 auto;
+    @media(max-width:400px){
+        display:grid;
+        grid-template-columns:repeat(2,100px);
+        grid-gap:100px;
+        justify-content:center;
+        align-items:center;
+    }
 `
 const FooterLinkFilho = styled.div`
     width:25%;
