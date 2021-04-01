@@ -14,5 +14,16 @@ Não esqueçam de editar o readme com:
     - Pedro Vitor de Souza
     - Gabriel Mina da Silva
 - O que funciona
+    - Carrossel
+    - Adicionar o produto no carrinho
+    - filtrar por Valor mínimo e máximo
+    - filtrar por filtrar porCategoria (uma por vez)
+    - filtrar por Título ou descrição
+    - ordenar por Nome
+    - ordenar por Preço
+    - ordenar por Categoria
+    - Campos do produto: Nome ,Descrição ,Preço, Método(s) de pagamento aceito(s) ,Categoria ,Fotos (URLs) ,Número de parcelas
 - O que não funciona
+    - Tudo funciona
 - **LINK DO SURGE**
+    http://cowardly-secretary.surge.sh/
