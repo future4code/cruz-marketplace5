@@ -24,6 +24,6 @@ Não esqueçam de editar o readme com:
     - ordenar por Categoria
     - Campos do produto: Nome ,Descrição ,Preço, Método(s) de pagamento aceito(s) ,Categoria ,Fotos (URLs) ,Número de parcelas
 - O que não funciona
-    - Tudo funciona
+    - Tudo funciona 
 - **LINK DO SURGE**
-    http://cowardly-secretary.surge.sh/
+    
