@@ -51,7 +51,6 @@ const Total = styled.p`
   position: absolute;
   left: 16px;
   
-
 `
 
 const UlStyled = styled.ul`
@@ -70,11 +69,17 @@ const IconCartButton = styled(IconButton)({
   width: '25px',
   left: '1250px',
   bottom: '1640px',
+  '@media (max-width:400px)' : {
+      left:'300px',
+      top:'-800',
+      bottom:'3090px',
+      top:'-500'
+  }
 });
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
-    
+
     border: `2px solid ${theme.palette.background.paper}`,
     padding: '2px 2px',
     '&:hover': {
@@ -85,7 +90,7 @@ const StyledBadge = withStyles((theme) => ({
 
 const StyledBadge2 = withStyles((theme) => ({
   badge: {
-    
+
     right: -3,
     border: `2px solid ${theme.palette.background.paper}`,
     padding: '2px 2px',
@@ -108,7 +113,7 @@ const ProdutosPai = styled.div`
   justify-content:center;
   grid-gap:15px;
   margin:5px;
-  @media(max-width:600px){
+  @media(max-width:400px){
     grid-template-columns:repeat(2,150px);
   };
 `
@@ -159,7 +164,7 @@ const DescricaoProdutos = styled.div`
   color:#EC805C;
 `
 const BotaoComprar = styled(Button)({
-  top:'30px',
+  top: '30px',
 });
 const Filtros = styled.div`
   background-color:#545863;
@@ -174,9 +179,15 @@ const Botoes = styled.div`
       display:flex;
       width:90%;
       justify-content:space-evenly;
+      @media(max-width:400px){
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        height:300px;
+      }
 `
 const Input = withStyles({
-  
+
   root: {
     width: '15%',
     '& label.Mui-focused': {
@@ -193,6 +204,10 @@ const FinalizarCompra = styled(Button)({
   cursor: 'pointer',
   bottom: '25px',
   left: '400px',
+  '@media (max-width:400px)' : {
+    position:'relative',
+    left:'180px'  
+  }
 });
 const BotaoFechar = styled(Button)({
   textAlign: 'center',
@@ -200,6 +215,10 @@ const BotaoFechar = styled(Button)({
   bottom: '25px',
   left: '540px',
   position: 'absolute',
+  '@media (max-width:400px)' : {
+    position:'relative',
+    left:'300px'  
+  }
 });
 
 const LiStyled = styled.li`
@@ -208,6 +227,7 @@ const LiStyled = styled.li`
 `;
 
 export class AppContainer extends React.Component {
+
   state = {
     cartItems: [],
     showProducts: [],
@@ -232,19 +252,19 @@ export class AppContainer extends React.Component {
   };
 
   pesquisarProdutos = () => {
-     return this.state.showProducts
+    return this.state.showProducts
       .filter((produtos) => this.props.maxPreco ? produtos.price < this.props.maxPreco : true)
       .filter((produtos) => this.props.minPreco ? produtos.price > this.props.minPreco : true)
       .filter((produtos) => this.props.nomeProduto ? produtos.name.toLowerCase().includes(this.props.nomeProduto) : true)
       .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
       .filter((produtos) => this.props.categoria ? produtos.category.toLowerCase().includes(this.props.categoria) : true)
-      
+
       .sort((a, b) => this.state.sort === "decrescente" ? a.price - b.price : b.price - a.price)
-    }
+  }
 
   onChangeSort = (event) => {
-    this.setState({sort: event.target.value});
-}
+    this.setState({ sort: event.target.value });
+  }
 
   adicionarItemCarrinho = (product) => {
     const novoCarrinho = [...this.state.cartItems];
@@ -307,31 +327,30 @@ export class AppContainer extends React.Component {
   toggleModal = () => {
     this.setState({ ...this.state, buttonPopup: !this.state.buttonPopup });
   };
-  
+
 
   render() {
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
-                <Imagens src={produtos.photos}></Imagens>
-                <DescricaoProdutos>
-                  <p><b>{produtos.name}</b></p>
-                  <p><i>{produtos.category}</i></p>
-                  <div>R$ {produtos.price},00</div>
-                </DescricaoProdutos>
-                <BotaoComprar 
-                  variant="outlined" 
-                  size="medium" 
-                  color="secondary" 
-                  onClick={() => this.adicionarItemCarrinho(produtos)}>
-                    Comprar
-                </BotaoComprar>            
-        </ProdutosTela>
+        <Imagens src={produtos.photos}></Imagens>
+        <DescricaoProdutos>
+          <p><b>{produtos.name}</b></p>
+          <p><i>{produtos.category}</i></p>
+          <div>R$ {produtos.price},00</div>
+        </DescricaoProdutos>
+        <BotaoComprar
+          variant="outlined"
+          size="medium"
+          color="secondary"
+          onClick={() => this.adicionarItemCarrinho(produtos)}>
+          Comprar
+                </BotaoComprar>
+      </ProdutosTela>
     })
-    
+
     return (
-      
+
       <Principal>
-        {console.log('props', this.props.count)}
         <Carousel
           autoPlay
           infiniteLoop
@@ -351,32 +370,32 @@ export class AppContainer extends React.Component {
         </Carousel>
         <Filtros>
           <Botoes>
-            <Input 
-              id="custom-css-standard-input" 
-              label="Buscar Produto" 
-              type="search" 
-              value={this.props.nomeProduto} 
+            <Input
+              id="custom-css-standard-input"
+              label="Buscar Produto"
+              type="search"
+              value={this.props.nomeProduto}
               onChange={this.props.onChangeNomeProduto}
             />
-              <Input 
-                id="custom-css-standard-input" 
-                label="Max. Preço" 
-                type="number" 
-                value={this.props.maxPreco} 
-                onChange={this.props.onChangeMaxPreco}
-              />
-            <Input 
-              id="custom-css-standard-input" 
-              label="Min. Preço" 
-              type="number" 
-              value={this.props.minPreco} 
+            <Input
+              id="custom-css-standard-input"
+              label="Max. Preço"
+              type="number"
+              value={this.props.maxPreco}
+              onChange={this.props.onChangeMaxPreco}
+            />
+            <Input
+              id="custom-css-standard-input"
+              label="Min. Preço"
+              type="number"
+              value={this.props.minPreco}
               onChange={this.props.onChangeMinPreco}
             />
-            <Input 
-              id="custom-css-standard-input" 
-              label="Categoria" 
-              type="search" 
-              value={this.props.categoria} 
+            <Input
+              id="custom-css-standard-input"
+              label="Categoria"
+              type="search"
+              value={this.props.categoria}
               onChange={this.props.onChangeNomeCategoria}
             />
             <TextField
@@ -384,7 +403,7 @@ export class AppContainer extends React.Component {
               select
               label="Ordenar"
               color='secondary'
-              value={this.state.sort} 
+              value={this.state.sort}
               onChange={this.onChangeSort}
               helperText="Escolha a ordem dos produtos">
               {currencies.map((option) => (
@@ -393,7 +412,6 @@ export class AppContainer extends React.Component {
                 </MenuItem>
               ))}
             </TextField>
-
           </Botoes>
         </Filtros>
         <Produtos>
@@ -413,12 +431,12 @@ export class AppContainer extends React.Component {
         </IconCartButton>
         <Popup trigger={this.state.buttonPopup}>
           <TituloCarrinhoDeCompras>Carrinho de Compras</TituloCarrinhoDeCompras>
-          <BotaoFechar 
-            onClick={this.toggleModal} 
+          <BotaoFechar
+            onClick={this.toggleModal}
             variant="outlined"
             size="small"
             color="secondary">
-              Fechar
+            Fechar
           </BotaoFechar>
           <UlStyled>
             {this.state.cartItems.map((product) => {
@@ -442,20 +460,21 @@ export class AppContainer extends React.Component {
                   </DeleteForever>
 
                 </LiStyled>
-                
+
               );
             })}
-                {
-                    <Total>
-                          Total: R${this.renderTotal()} 
-                        <FinalizarCompra 
-                          variant="outlined"
-                          size="small"
-                          color="secondary">
-                            Finalizar Compra
+            {
+              <Total>
+                Total: R${this.renderTotal()}
+                <FinalizarCompra
+                  variant="outlined"
+                  size="small"
+                  color="secondary"
+                  >
+                  Finalizar Compra
                         </FinalizarCompra>
-                    </Total>
-                  }
+              </Total>
+            }
           </UlStyled>
         </Popup>
       </Principal>
