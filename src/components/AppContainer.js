@@ -29,7 +29,7 @@ const ProdutosPai = styled.div`
   justify-content:center;
   grid-gap:15px;
   width:100%;
-  height:75%;
+  height:88%;
   @media(max-width:600px){
     grid-template-columns:repeat(2,150px);
   }
@@ -67,10 +67,10 @@ const Filtros = styled.div`
 `
 const Botoes = styled.div`
       display:flex;
-      width:100%;
+      width:70%;
       justify-content:space-evenly;
 `
-const InputPesquisar = withStyles({
+const Input = withStyles({
   root: {
     width: '15%',
     '& label.Mui-focused': {
@@ -107,9 +107,10 @@ export class AppContainer extends React.Component {
     return this.state.showProducts
       .filter((produtos) => this.props.maxPreco ? produtos.price < this.props.maxPreco : true)
       .filter((produtos) => this.props.minPreco ? produtos.price > this.props.minPreco : true)
-      .filter((produtos) => this.props.nameProduto ? produtos.name.toLowerCase().includes(this.props.nameProduto) : true)
+      .filter((produtos) => this.props.nomeProduto ? produtos.name.toLowerCase().includes(this.props.nomeProduto) : true)
       .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
-
+      .filter((produtos) => this.props.categoria ? produtos.category.toLowerCase().includes(this.props.categoria) : true)
+      
       .sort((a, b) => this.state.sort === "crescente" ? a.cost - b.cost : b.cost - a.cost)
     }
 
@@ -124,6 +125,7 @@ export class AppContainer extends React.Component {
                 <Imagens src={produtos.photos}></Imagens>
                 <DescricaoProdutos>
                   <p><b>{produtos.name}</b></p>
+                  <p>{produtos.category}</p>
                   <div>R${produtos.price},00</div>
                 </DescricaoProdutos>
                 <BotaoComprar variant="outlined" size="medium" color="secondary">
@@ -147,30 +149,37 @@ export class AppContainer extends React.Component {
         </Carousel>
         <Filtros>
           <Botoes>
-            <InputPesquisar 
+            <Input 
               id="custom-css-standard-input" 
               label="Nome" 
               type="search" 
-              value={this.props.nameProduto} 
-              onChange={this.props.onChangenameProduto}
+              value={this.props.nomeProduto} 
+              onChange={this.props.onChangenomeProduto}
             />
-            <InputPesquisar 
+            <Input 
               id="custom-css-standard-input" 
               label="Preço" 
-              type="search" 
+              type="number" 
               value={this.pesquisar} 
               onChange={this.onChangePesquisar}
               pesquisar = {this.state.pesquisar}
             />
-            <InputPesquisar 
+            <Input 
+              id="custom-css-standard-input" 
+              label="Preço" 
+              type="number" 
+              value={this.pesquisar} 
+              onChange={this.onChangePesquisar}
+              pesquisar = {this.state.pesquisar}
+            />
+            <Input 
               id="custom-css-standard-input" 
               label="Categoria" 
               type="search" 
-              value={this.pesquisar} 
-              onChange={this.onChangePesquisar}
-              pesquisar = {this.state.pesquisar}
+              value={this.props.categoria} 
+              onChange={this.props.onChangeNomeCategoria}
             />
-            <InputPesquisar 
+            <Input 
               id="custom-css-standard-input" 
               label="Ordenar" 
               type="search" 
