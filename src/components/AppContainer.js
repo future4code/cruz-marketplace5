@@ -62,8 +62,8 @@ const UlStyled = styled.ul`
 `;
 
 const IconCartButton = styled(IconButton)({
-  left: '800px',
-  bottom: '1400px'
+  left: '200px',
+  bottom: '1690px'
 });
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -100,6 +100,7 @@ const ProdutosPai = styled.div`
   grid-template-columns:repeat(6, 200px);
   justify-content:center;
   grid-gap:15px;
+  margin:5px;
   @media(max-width:600px){
     grid-template-columns:repeat(2,150px);
   };
@@ -345,10 +346,6 @@ export class AppContainer extends React.Component {
   
 
   render() {
-
-  
-
-  
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
                 <Imagens src={produtos.photos}></Imagens>

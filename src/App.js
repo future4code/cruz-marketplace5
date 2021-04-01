@@ -52,6 +52,23 @@ const InputPesquisar = withStyles({
     }
   }
 })(TextField);
+
+const IconCartButton = styled(IconButton)({
+  right: '50px',
+  top:'5px',
+})
+
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: -3,
+    top: 15,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '4px 4px',
+    '&:hover':{
+      color:'black',
+    }
+  },
+}))(Badge);
 const DivPesquisar = styled.div`
   margin-left: 203px;
 `;
@@ -67,6 +84,7 @@ export default class App extends React.Component {
     categoria: '',
   };
 
+  
   mudarPagina = () => {
     if (this.state.pagina === 'home') {
       this.setState({ pagina: 'vender' });
@@ -74,7 +92,6 @@ export default class App extends React.Component {
       this.setState({ pagina: 'home' });
     }
   };
-
   botaoSellerPage = () => {
     switch (this.state.pagina) {
       case 'home':
@@ -137,6 +154,7 @@ export default class App extends React.Component {
   onChangeMinPreco = (event) => {
     this.setState({minPreco: event.target.value})
   }
+  
 
   renderizaPagina = () => {
     switch(this.state.pagina) {
@@ -171,7 +189,23 @@ export default class App extends React.Component {
           {this.botaoSellerPage()}
         </HeaderContainer>
 
-        <Body color="primary">{this.renderizaPagina()}</Body>
+      {this.botaoSellerPage()}
+    <HeaderContainer>
+      <IconCartButton aria-label="cart">
+        <StyledBadge anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+          }} 
+          badgeContent={1} color="secondary">
+          <ShoppingCartIcon color="secondary"/>
+        </StyledBadge>
+      </IconCartButton>
+      
+    </HeaderContainer>
+
+      <Body color="primary">
+        {this.renderizaPagina()}
+      </Body>
         <Footer />
       </ThemeProvider>
     );
