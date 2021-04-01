@@ -18,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
 }));
-
 const SellerContainer = styled.div`
 display: flex;
 flex-direction: column;
@@ -37,7 +36,6 @@ const Input = withStyles({
       },
     },
   })(TextField);
-
 const BotaoEnviar = styled(Button)({
     top: '10px',
     width: '7%',
@@ -53,6 +51,7 @@ const BotaoEnviar = styled(Button)({
 const Botao = styled.input`
     display:none;
 `
+
 
 export default class SellerPage extends React.Component {
     state = {
