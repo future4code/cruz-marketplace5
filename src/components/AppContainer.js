@@ -185,7 +185,7 @@ export class AppContainer extends React.Component {
           <Botoes>
             <Input 
               id="custom-css-standard-input" 
-              label="Nome" 
+              label="Buscar Produto" 
               type="search" 
               value={this.props.nomeProduto} 
               onChange={this.props.onChangeNomeProduto}
