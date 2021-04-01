@@ -23,7 +23,7 @@ const HeaderContainer = styled.div`
 const Body = styled.body`
 `
 const BotaoVender = styled(Button)({
-  left: '200px',
+  right: '150px',
   top: '35px',
   border: 'none',
   padding: '8px 10px',
@@ -42,7 +42,7 @@ const BotaoVender = styled(Button)({
 const InputPesquisar = withStyles({
   root: {
     top: '15px',
-    right: '200px',
+    right: '400px',
     width: '15%',
     '& label.Mui-focused': {
       color: '#EC805C'
