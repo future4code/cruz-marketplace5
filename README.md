@@ -27,7 +27,7 @@ Não esqueçam de editar o readme com:
     - Tudo funciona
     - 
 - **LINK DO SURGE**
-        http://unknown-smile.surge.sh/
+        compra-e-venda-labenu.surge.sh
     
 ###imagens
 ![Sem título](https://user-images.githubusercontent.com/67350243/113356982-8af96e00-9319-11eb-8659-652354ce4dc8.png)
