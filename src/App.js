@@ -78,12 +78,12 @@ export default class App extends React.Component {
   state = {
     pagina: 'home',
     pesquisar: '',
-
-    count:0,
     maxPreco: '',
     minPreco: '',
-    nameProduto: '',
+    nomeProduto: '',
+    categoria: '',
   };
+
   mudarPagina = () => {
     if(this.state.pagina === 'home') {
       this.setState({pagina: 'vender'})
@@ -98,8 +98,10 @@ export default class App extends React.Component {
         return <AppContainer
         pesquisar = {this.state.pesquisar}
         onChangePesquisar = {this.onChangePesquisar}
-        filtroNome = {this.state.filtroNome}
-        onChangePesquisaFiltro = {this.onChangePesquisaFiltro}
+        nomeProduto = {this.state.nomeProduto}
+        onChangenomeProduto = {this.onChangenomeProduto}
+        categoria = {this.state.categoria}
+        onChangeNomeCategoria = {this.onChangeNomeCategoria}
          />;
       case 'vender':
         return <SellerPage />;
@@ -143,9 +145,13 @@ export default class App extends React.Component {
     this.setState({pesquisar: event.target.value})
   }
 
-  onChangenameProduto = (event) =>{
-    this.setState({nameProduto:event.target.value})
+  onChangenomeProduto = (event) =>{
+    this.setState({nomeProduto: event.target.value})
   }
+  onChangeNomeCategoria = (event) =>{
+    this.setState({categoria: event.target.value})
+  }
+  
 	render() {
 		return(
 			<ThemeProvider theme={theme}>
