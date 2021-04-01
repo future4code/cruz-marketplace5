@@ -17,7 +17,11 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import { baseUrl } from '../Parametros'
+import { Grid } from '@material-ui/core';
 
+const TituloCarrinhoDeCompras = styled.h2`
+  color: #EC805C;
+`
 const currencies = [
   {
     value: 'crescente',
@@ -43,10 +47,10 @@ const Principal = styled.div`
 `;
 
 const Total = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   position: absolute;
-  bottom: 1px;
   left: 16px;
+  
 
 `
 
@@ -59,18 +63,20 @@ const UlStyled = styled.ul`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   align-items: center;
+  
 `;
 
 const IconCartButton = styled(IconButton)({
-  left: '200px',
-  bottom: '1690px'
+  width: '25px',
+  left: '1250px',
+  bottom: '1640px',
 });
+
 const StyledBadge = withStyles((theme) => ({
   badge: {
-    right: -3,
-    top: 15,
+    
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '4px 4px',
+    padding: '2px 2px',
     '&:hover': {
       color: 'black'
     }
@@ -79,9 +85,10 @@ const StyledBadge = withStyles((theme) => ({
 
 const StyledBadge2 = withStyles((theme) => ({
   badge: {
+    
     right: -3,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '4px 4px',
+    padding: '2px 2px',
     '&:hover': {
       color: 'black'
     }
@@ -169,6 +176,7 @@ const Botoes = styled.div`
       justify-content:space-evenly;
 `
 const Input = withStyles({
+  
   root: {
     width: '15%',
     '& label.Mui-focused': {
@@ -180,63 +188,19 @@ const Input = withStyles({
   },
 })(TextField);
 
-const FinalizarCompra = styled.button`
-  background-color: #545863;
-  color: white;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 35px;
-  transition-duration: 0.5s;
-  cursor: pointer;
-  border-radius: 15px;
-  border-style: dotted dashed solid double;
-  position: absolute;
-  bottom: 1px;
-  right: -580px;
-  &:hover {
-    background-color: green;
-    color: white;
-    font-size: 100%;
-    border: 2px solid #545863;
-    border-style: dotted dashed solid double;
-    &:active {
-      background-color: black;
-      color: #ec805c;
-    }
-  }
-`;
-
-const BotaoFechar = styled.button`
-  background-color: #545863;
-  color: white;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 35px;
-  transition-duration: 0.5s;
-  cursor: pointer;
-  border-radius: 15px;
-  border-style: dotted dashed solid double;
-  position: absolute;
-  bottom: 1px;
-  right: -580px;
-  &:hover {
-    background-color: green;
-    color: white;
-    font-size: 100%;
-    border: 2px solid #545863;
-    border-style: dotted dashed solid double;
-    &:active {
-      background-color: black;
-      color: #ec805c;
-    }
-  }
-`;
+const FinalizarCompra = styled(Button)({
+  textAlign: 'center',
+  cursor: 'pointer',
+  bottom: '25px',
+  left: '400px',
+});
+const BotaoFechar = styled(Button)({
+  textAlign: 'center',
+  cursor: 'pointer',
+  bottom: '25px',
+  left: '540px',
+  position: 'absolute',
+});
 
 const LiStyled = styled.li`
   background: rgba(255, 255, 255, 0.1);
@@ -354,8 +318,12 @@ export class AppContainer extends React.Component {
                   <p><i>{produtos.category}</i></p>
                   <div>R$ {produtos.price},00</div>
                 </DescricaoProdutos>
-                <BotaoComprar variant="outlined" size="medium" color="secondary" onClick={() => this.adicionarItemCarrinho(produtos)}>
-                  Comprar
+                <BotaoComprar 
+                  variant="outlined" 
+                  size="medium" 
+                  color="secondary" 
+                  onClick={() => this.adicionarItemCarrinho(produtos)}>
+                    Comprar
                 </BotaoComprar>            
         </ProdutosTela>
     })
@@ -444,34 +412,50 @@ export class AppContainer extends React.Component {
           </StyledBadge>
         </IconCartButton>
         <Popup trigger={this.state.buttonPopup}>
-          <BotaoFechar onClick={this.toggleModal}>Fechar</BotaoFechar>
-          <h2>Carrinho de compras</h2>
+          <TituloCarrinhoDeCompras>Carrinho de Compras</TituloCarrinhoDeCompras>
+          <BotaoFechar 
+            onClick={this.toggleModal} 
+            variant="outlined"
+            size="small"
+            color="secondary">
+              Fechar
+          </BotaoFechar>
           <UlStyled>
             {this.state.cartItems.map((product) => {
               return (
                 <LiStyled>
+
                   <Imagens2 src={product.product.photos}></Imagens2>
                   <StyledBadge2
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right'
-            }}
-            badgeContent={product.quantidade}
-            color="secondary"
-          ></StyledBadge2> -{' '}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right'
+                    }}
+                    badgeContent={product.quantidade}
+                    color="secondary"
+                  ></StyledBadge2> -{' '}
                   {product.product.name} R$
                   {product.product.price * product.quantidade}{' '}
+
                   <DeleteForever onClick={() => this.removerItemCarrinho(product)}>
                     x
                   </DeleteForever>
+
                 </LiStyled>
+                
               );
             })}
-            {
-              <Total>
-                Total: R${this.renderTotal()} <FinalizarCompra>Finalizar Compra</FinalizarCompra>
-              </Total>
-            }
+                {
+                    <Total>
+                          Total: R${this.renderTotal()} 
+                        <FinalizarCompra 
+                          variant="outlined"
+                          size="small"
+                          color="secondary">
+                            Finalizar Compra
+                        </FinalizarCompra>
+                    </Total>
+                  }
           </UlStyled>
         </Popup>
       </Principal>

@@ -53,11 +53,6 @@ const InputPesquisar = withStyles({
   }
 })(TextField);
 
-const IconCartButton = styled(IconButton)({
-  right: '50px',
-  top:'5px',
-})
-
 const StyledBadge = withStyles((theme) => ({
   badge: {
     right: -3,
@@ -190,18 +185,6 @@ export default class App extends React.Component {
         </HeaderContainer>
 
       {this.botaoSellerPage()}
-    <HeaderContainer>
-      <IconCartButton aria-label="cart">
-        <StyledBadge anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-          }} 
-          badgeContent={1} color="secondary">
-          <ShoppingCartIcon color="secondary"/>
-        </StyledBadge>
-      </IconCartButton>
-      
-    </HeaderContainer>
 
       <Body color="primary">
         {this.renderizaPagina()}
