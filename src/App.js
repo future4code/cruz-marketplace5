@@ -17,11 +17,11 @@ const HeaderContainer = styled.div`
   background-color: #545863;
   display: flex;
   justify-content: space-between;
-  text-align: center;
-  padding: 0;
   margin: 0;
-`;
-const Body = styled.body``;
+  padding: 0;
+`
+const Body = styled.body`
+`
 const BotaoVender = styled(Button)({
   left: '200px',
   top: '35px',
@@ -57,10 +57,14 @@ const DivPesquisar = styled.div`
 `;
 
 export default class App extends React.Component {
+ 
   state = {
     pagina: 'home',
     pesquisar: '',
-    count: 0
+    maxPreco: '',
+    minPreco: '',
+    nomeProduto: '',
+    categoria: '',
   };
 
   mudarPagina = () => {
@@ -68,23 +72,6 @@ export default class App extends React.Component {
       this.setState({ pagina: 'vender' });
     } else if (this.state.pagina === 'vender') {
       this.setState({ pagina: 'home' });
-    }
-  };
-
-  renderizaPagina = () => {
-    switch (this.state.pagina) {
-      case 'home':
-        return (
-          <AppContainer
-            pesquisar={this.state.pesquisar}
-            onChangePesquisar={this.onChangePesquisar}
-            count={this.state.count}
-          />
-        );
-      case 'vender':
-        return <SellerPage />;
-      default:
-        return <div></div>;
     }
   };
 
@@ -136,8 +123,49 @@ export default class App extends React.Component {
   };
 
   onChangePesquisar = (event) => {
-    this.setState({ pesquisar: event.target.value });
+    this.setState({pesquisar: event.target.value})
+  }
+  onChangeNomeProduto = (event) =>{
+    this.setState({nomeProduto: event.target.value})
+  }
+  onChangeNomeCategoria = (event) =>{
+    this.setState({categoria: event.target.value})
+  }
+  onChangeMaxPreco = (event) => {
+    this.setState({maxPreco: event.target.value})
+  }
+  onChangeMinPreco = (event) => {
+    this.setState({minPreco: event.target.value})
+  }
+
+  renderizaPagina = () => {
+    switch(this.state.pagina) {
+      case 'home':
+        return <AppContainer
+        pesquisar = {this.state.pesquisar}
+        onChangePesquisar = {this.onChangePesquisar}
+        nomeProduto = {this.state.nomeProduto}
+        onChangeNomeProduto = {this.onChangeNomeProduto}
+        categoria = {this.state.categoria}
+        onChangeNomeCategoria = {this.onChangeNomeCategoria}
+        maxPreco = {this.state.maxPreco}
+        onChangeMaxPreco = {this.onChangeMaxPreco}
+        minPreco = {this.state.minPreco}
+        onChangeMinPreco = {this.onChangeMinPreco}
+         />;
+      case 'vender':
+        return <SellerPage />;
+      default:
+        return <div></div>;
+    }
   };
+
+	render() {
+		return(
+			<ThemeProvider theme={theme}>
+
+    <HeaderContainer>
+      <h1>Logo</h1>
 
   render() {
     return (
