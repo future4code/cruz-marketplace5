@@ -19,11 +19,15 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   margin: 0;
   padding: 0;
+  @media(min-width:600px){
+    display:flex;
+    justify-content:space-between;
+  }
 `
 const Body = styled.body`
 `
 const BotaoVender = styled(Button)({
-  left: '200px',
+  right: '150px',
   top: '35px',
   border: 'none',
   padding: '8px 10px',
@@ -42,7 +46,7 @@ const BotaoVender = styled(Button)({
 const InputPesquisar = withStyles({
   root: {
     top: '15px',
-    right: '200px',
+    right: '400px',
     width: '15%',
     '& label.Mui-focused': {
       color: '#EC805C'
@@ -52,11 +56,6 @@ const InputPesquisar = withStyles({
     }
   }
 })(TextField);
-
-const IconCartButton = styled(IconButton)({
-  right: '50px',
-  top:'5px',
-})
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -190,18 +189,6 @@ export default class App extends React.Component {
         </HeaderContainer>
 
       {this.botaoSellerPage()}
-    <HeaderContainer>
-      <IconCartButton aria-label="cart">
-        <StyledBadge anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-          }} 
-          badgeContent={1} color="secondary">
-          <ShoppingCartIcon color="secondary"/>
-        </StyledBadge>
-      </IconCartButton>
-      
-    </HeaderContainer>
 
       <Body color="primary">
         {this.renderizaPagina()}

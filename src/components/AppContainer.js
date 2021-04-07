@@ -17,7 +17,11 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import { baseUrl } from '../Parametros'
+import { Grid } from '@material-ui/core';
 
+const TituloCarrinhoDeCompras = styled.h2`
+  color: #EC805C;
+`
 const currencies = [
   {
     value: 'crescente',
@@ -43,11 +47,10 @@ const Principal = styled.div`
 `;
 
 const Total = styled.p`
-  font-size: 20px;
+  font-size: 16px;
   position: absolute;
-  bottom: 1px;
   left: 16px;
-
+  
 `
 
 const UlStyled = styled.ul`
@@ -59,18 +62,26 @@ const UlStyled = styled.ul`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   align-items: center;
+  
 `;
 
 const IconCartButton = styled(IconButton)({
-  left: '200px',
-  bottom: '1690px'
+  width: '25px',
+  left: '1250px',
+  bottom: '1640px',
+  '@media (min-width:600px)' : {
+      left:'300px',
+      top:'-800',
+      bottom:'3090px',
+      top:'-500'
+  }
 });
+
 const StyledBadge = withStyles((theme) => ({
   badge: {
-    right: -3,
-    top: 15,
+
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '4px 4px',
+    padding: '2px 2px',
     '&:hover': {
       color: 'black'
     }
@@ -79,9 +90,10 @@ const StyledBadge = withStyles((theme) => ({
 
 const StyledBadge2 = withStyles((theme) => ({
   badge: {
+
     right: -3,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '4px 4px',
+    padding: '2px 2px',
     '&:hover': {
       color: 'black'
     }
@@ -101,7 +113,7 @@ const ProdutosPai = styled.div`
   justify-content:center;
   grid-gap:15px;
   margin:5px;
-  @media(max-width:600px){
+  @media(min-width:600px){
     grid-template-columns:repeat(2,150px);
   };
 `
@@ -152,7 +164,7 @@ const DescricaoProdutos = styled.div`
   color:#EC805C;
 `
 const BotaoComprar = styled(Button)({
-  top:'30px',
+  top: '30px',
 });
 const Filtros = styled.div`
   background-color:#545863;
@@ -167,8 +179,15 @@ const Botoes = styled.div`
       display:flex;
       width:90%;
       justify-content:space-evenly;
+      @media(min-width:600px){
+        display:flex;
+        flex-direction:column;
+        justify-content:space-between;
+        height:300px;
+      }
 `
 const Input = withStyles({
+
   root: {
     width: '15%',
     '& label.Mui-focused': {
@@ -180,63 +199,27 @@ const Input = withStyles({
   },
 })(TextField);
 
-const FinalizarCompra = styled.button`
-  background-color: #545863;
-  color: white;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 35px;
-  transition-duration: 0.5s;
-  cursor: pointer;
-  border-radius: 15px;
-  border-style: dotted dashed solid double;
-  position: absolute;
-  bottom: 1px;
-  right: -580px;
-  &:hover {
-    background-color: green;
-    color: white;
-    font-size: 100%;
-    border: 2px solid #545863;
-    border-style: dotted dashed solid double;
-    &:active {
-      background-color: black;
-      color: #ec805c;
-    }
+const FinalizarCompra = styled(Button)({
+  textAlign: 'center',
+  cursor: 'pointer',
+  bottom: '25px',
+  left: '400px',
+  '@media (min-width:600px)' : {
+    position:'relative',
+    left:'180px'  
   }
-`;
-
-const BotaoFechar = styled.button`
-  background-color: #545863;
-  color: white;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 35px;
-  transition-duration: 0.5s;
-  cursor: pointer;
-  border-radius: 15px;
-  border-style: dotted dashed solid double;
-  position: absolute;
-  bottom: 1px;
-  right: -580px;
-  &:hover {
-    background-color: green;
-    color: white;
-    font-size: 100%;
-    border: 2px solid #545863;
-    border-style: dotted dashed solid double;
-    &:active {
-      background-color: black;
-      color: #ec805c;
-    }
+});
+const BotaoFechar = styled(Button)({
+  textAlign: 'center',
+  cursor: 'pointer',
+  bottom: '25px',
+  left: '540px',
+  position: 'absolute',
+  '@media (min-width:600px)' : {
+    position:'relative',
+    left:'300px'  
   }
-`;
+});
 
 const LiStyled = styled.li`
   background: rgba(255, 255, 255, 0.1);
@@ -244,6 +227,7 @@ const LiStyled = styled.li`
 `;
 
 export class AppContainer extends React.Component {
+
   state = {
     cartItems: [],
     showProducts: [],
@@ -268,19 +252,19 @@ export class AppContainer extends React.Component {
   };
 
   pesquisarProdutos = () => {
-     return this.state.showProducts
+    return this.state.showProducts
       .filter((produtos) => this.props.maxPreco ? produtos.price < this.props.maxPreco : true)
       .filter((produtos) => this.props.minPreco ? produtos.price > this.props.minPreco : true)
       .filter((produtos) => this.props.nomeProduto ? produtos.name.toLowerCase().includes(this.props.nomeProduto) : true)
       .filter((produtos) => this.props.pesquisar ? produtos.name.toLowerCase().includes(this.props.pesquisar) : true)
       .filter((produtos) => this.props.categoria ? produtos.category.toLowerCase().includes(this.props.categoria) : true)
-      
+
       .sort((a, b) => this.state.sort === "decrescente" ? a.price - b.price : b.price - a.price)
-    }
+  }
 
   onChangeSort = (event) => {
-    this.setState({sort: event.target.value});
-}
+    this.setState({ sort: event.target.value });
+  }
 
   adicionarItemCarrinho = (product) => {
     const novoCarrinho = [...this.state.cartItems];
@@ -343,27 +327,30 @@ export class AppContainer extends React.Component {
   toggleModal = () => {
     this.setState({ ...this.state, buttonPopup: !this.state.buttonPopup });
   };
-  
+
 
   render() {
     const mostrarTela = this.pesquisarProdutos().map((produtos) => {
       return <ProdutosTela>
-                <Imagens src={produtos.photos}></Imagens>
-                <DescricaoProdutos>
-                  <p><b>{produtos.name}</b></p>
-                  <p><i>{produtos.category}</i></p>
-                  <div>R$ {produtos.price},00</div>
-                </DescricaoProdutos>
-                <BotaoComprar variant="outlined" size="medium" color="secondary" onClick={() => this.adicionarItemCarrinho(produtos)}>
-                  Comprar
-                </BotaoComprar>            
-        </ProdutosTela>
+        <Imagens src={produtos.photos}></Imagens>
+        <DescricaoProdutos>
+          <p><b>{produtos.name}</b></p>
+          <p><i>{produtos.category}</i></p>
+          <div>R$ {produtos.price},00</div>
+        </DescricaoProdutos>
+        <BotaoComprar
+          variant="outlined"
+          size="medium"
+          color="secondary"
+          onClick={() => this.adicionarItemCarrinho(produtos)}>
+          Comprar
+                </BotaoComprar>
+      </ProdutosTela>
     })
-    
+
     return (
-      
+
       <Principal>
-        {console.log('props', this.props.count)}
         <Carousel
           autoPlay
           infiniteLoop
@@ -383,32 +370,32 @@ export class AppContainer extends React.Component {
         </Carousel>
         <Filtros>
           <Botoes>
-            <Input 
-              id="custom-css-standard-input" 
-              label="Nome" 
-              type="search" 
-              value={this.props.nomeProduto} 
+            <Input
+              id="custom-css-standard-input"
+              label="Buscar Produto"
+              type="search"
+              value={this.props.nomeProduto}
               onChange={this.props.onChangeNomeProduto}
             />
-              <Input 
-                id="custom-css-standard-input" 
-                label="Max. Preço" 
-                type="number" 
-                value={this.props.maxPreco} 
-                onChange={this.props.onChangeMaxPreco}
-              />
-            <Input 
-              id="custom-css-standard-input" 
-              label="Min. Preço" 
-              type="number" 
-              value={this.props.minPreco} 
+            <Input
+              id="custom-css-standard-input"
+              label="Max. Preço"
+              type="number"
+              value={this.props.maxPreco}
+              onChange={this.props.onChangeMaxPreco}
+            />
+            <Input
+              id="custom-css-standard-input"
+              label="Min. Preço"
+              type="number"
+              value={this.props.minPreco}
               onChange={this.props.onChangeMinPreco}
             />
-            <Input 
-              id="custom-css-standard-input" 
-              label="Categoria" 
-              type="search" 
-              value={this.props.categoria} 
+            <Input
+              id="custom-css-standard-input"
+              label="Categoria"
+              type="search"
+              value={this.props.categoria}
               onChange={this.props.onChangeNomeCategoria}
             />
             <TextField
@@ -416,7 +403,7 @@ export class AppContainer extends React.Component {
               select
               label="Ordenar"
               color='secondary'
-              value={this.state.sort} 
+              value={this.state.sort}
               onChange={this.onChangeSort}
               helperText="Escolha a ordem dos produtos">
               {currencies.map((option) => (
@@ -425,7 +412,6 @@ export class AppContainer extends React.Component {
                 </MenuItem>
               ))}
             </TextField>
-
           </Botoes>
         </Filtros>
         <Produtos>
@@ -444,32 +430,49 @@ export class AppContainer extends React.Component {
           </StyledBadge>
         </IconCartButton>
         <Popup trigger={this.state.buttonPopup}>
-          <BotaoFechar onClick={this.toggleModal}>Fechar</BotaoFechar>
-          <h2>Carrinho de compras</h2>
+          <TituloCarrinhoDeCompras>Carrinho de Compras</TituloCarrinhoDeCompras>
+          <BotaoFechar
+            onClick={this.toggleModal}
+            variant="outlined"
+            size="small"
+            color="secondary">
+            Fechar
+          </BotaoFechar>
           <UlStyled>
             {this.state.cartItems.map((product) => {
               return (
                 <LiStyled>
+
                   <Imagens2 src={product.product.photos}></Imagens2>
                   <StyledBadge2
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right'
-            }}
-            badgeContent={product.quantidade}
-            color="secondary"
-          ></StyledBadge2> -{' '}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right'
+                    }}
+                    badgeContent={product.quantidade}
+                    color="secondary"
+                  ></StyledBadge2> -{' '}
                   {product.product.name} R$
                   {product.product.price * product.quantidade}{' '}
+
                   <DeleteForever onClick={() => this.removerItemCarrinho(product)}>
                     x
                   </DeleteForever>
+
                 </LiStyled>
+
               );
             })}
             {
               <Total>
-                Total: R${this.renderTotal()} <FinalizarCompra>Finalizar Compra</FinalizarCompra>
+                Total: R${this.renderTotal()}
+                <FinalizarCompra
+                  variant="outlined"
+                  size="small"
+                  color="secondary"
+                  >
+                  Finalizar Compra
+                        </FinalizarCompra>
               </Total>
             }
           </UlStyled>

@@ -19,3 +19,9 @@
   border: 3px inset #ec805c;
   border-radius: 15px;
 }
+
+@media only screen and (min-width:600px) {
+  .popup{
+    width:98%;
+  } 
+}
